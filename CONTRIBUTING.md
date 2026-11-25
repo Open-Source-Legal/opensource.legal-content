@@ -35,6 +35,12 @@ Describe the inputs, the steps you tested and the expected result.
 
 Use Markdown headings, lists, links and fenced code blocks. The template supplies the main heading from the title. Quote YAML values containing a colon followed by a space. The date determines newest-first ordering, with filename breaking ties. Merging publishes the article immediately, including articles with a future date. Every article gets a page, an archive listing, full-text search and a sitemap entry. The latest three appear on the homepage.
 
+## Write the first Assembly Line court-form walkthrough
+
+Have you turned a blank court form into a guided interview? We welcome a short how-to from a legal-aid practitioner or court-form developer using Suffolk LIT Lab’s Document Assembly Line. Pick one small task, such as carrying a party’s name from an interview question into the caption of a completed form. [Assembly Line authoring documentation](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/)
+
+Name the jurisdiction and form version, link the issuing court’s blank form, and use invented answers. Show the question, the field it fills and what a reader should see in the generated document. A reader should be able to repeat the example and spot a mapping error. Use the article format above and submit the draft as a pull request. [Start a Markdown article](https://github.com/Open-Source-Legal/opensource.legal-content/new/main/content/articles)
+
 ## Review and preview
 
 Open a pull request against `main` from your fork. The build check also attaches an archive screenshot for reviewers. Read [the contributor agreement](CLA.md) and sign using the instruction on the pull request. Each contributor signs for their own work. A maintainer reviews the submission and the automated check validates the directory and renders the articles.
