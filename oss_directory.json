@@ -147,6 +147,15 @@
     "category": "Legal Research & Court Data"
   },
   {
+    "title": "JLaw-CiteGraph",
+    "github_url": "https://github.com/yabooung/jp-law-citation-graph",
+    "homepage": "https://huggingface.co/datasets/yabooung/jp-law-citation-graph",
+    "description": "Trace citations between Japanese laws at the article, paragraph or item level. The jlawcite command-line tool searches dated snapshots built from e-Gov XML and shows incoming and outgoing references. Code is Apache-2.0 and graph data is CC BY 4.0.",
+    "category": "Legal Research & Court Data",
+    "license": "Apache-2.0",
+    "license_label": "Apache-2.0 code · CC BY 4.0 data"
+  },
+  {
     "title": "Eyecite",
     "github_url": "https://github.com/freelawproject/eyecite",
     "homepage": "https://free.law/projects/eyecite",
