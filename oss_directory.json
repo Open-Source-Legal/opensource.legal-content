@@ -131,6 +131,15 @@
     "category": "Legal AI Platforms"
   },
   {
+    "title": "U.S. state ID name-change requirements after marriage",
+    "github_url": "https://github.com/small-business-software-maker/name-change-requirements-by-state",
+    "homepage": null,
+    "description": "Compare driver’s license and state ID name-change requirements after marriage across 46 U.S. jurisdictions. Each CSV row includes an issuing agency, a government source URL and a verification date for checking whether the information has changed. CC BY 4.0.",
+    "category": "Legal Research & Court Data",
+    "license": "CC-BY-4.0",
+    "license_label": "CC BY 4.0"
+  },
+  {
     "title": "Juriscraper",
     "github_url": "https://github.com/freelawproject/juriscraper",
     "homepage": "https://free.law/projects/juriscraper",
