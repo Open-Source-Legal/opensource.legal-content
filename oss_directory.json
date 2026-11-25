@@ -305,6 +305,15 @@
     "category": "Legal Research & Court Data"
   },
   {
+    "title": "Vaquill Open US Law",
+    "github_url": "https://github.com/Vaquill-AI/open-us-law",
+    "homepage": "https://oss-data-us.vaquill.ai/index.html",
+    "description": "Download U.S. federal and state statutes, regulations and agency materials as source-linked Parquet files. Vaquill licenses the collection code under Apache-2.0 and the compilation under CC BY-NC 4.0 starting with the September 2026 release.",
+    "category": "Legal Research & Court Data",
+    "license": "CC-BY-NC-4.0",
+    "license_label": "CC BY-NC 4.0 compilation · Apache-2.0 code"
+  },
+  {
     "title": "OpenEDGAR",
     "github_url": "https://github.com/LexPredict/openedgar",
     "homepage": "https://openedgar.io/",
