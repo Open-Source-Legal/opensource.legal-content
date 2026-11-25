@@ -3,6 +3,12 @@ title: LegalBench
 subject: legal-reasoning
 publisher: LegalBench contributors
 access: Public tasks and prompts
+homepage: https://hazyresearch.stanford.edu/legalbench/
+github_url: https://github.com/HazyResearch/legalbench
+licenses:
+  - id: LicenseRef-TaskSpecific
+    label: Task-specific licenses
+    url: https://github.com/HazyResearch/legalbench#licenses
 summary: Select a legal reasoning task, inspect its labeled examples and evaluate responses using the task’s scoring method.
 date: 2026-11-25
 author: Open Source Legal

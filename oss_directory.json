@@ -520,13 +520,6 @@
     "license_label": "MIT scorer · CC BY 4.0 data"
   },
   {
-    "title": "LegalBench",
-    "github_url": "https://github.com/HazyResearch/legalbench",
-    "homepage": "https://hazyresearch.stanford.edu/legalbench/",
-    "description": "Collaboratively built benchmark for legal reasoning in foundation models — 162 tasks structured around the IRAC framework (Issue spotting, Rule recall, Rule Application, Conclusion). Co-authored by Stanford CodeX, RegLab, and dozens of legal academics. The standard LLM-era legal-reasoning benchmark.",
-    "category": "Legal AI Datasets & Benchmarks"
-  },
-  {
     "title": "Docling",
     "github_url": "https://github.com/docling-project/docling",
     "homepage": "https://www.docling.ai/",

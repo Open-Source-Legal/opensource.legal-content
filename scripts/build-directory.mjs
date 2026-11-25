@@ -159,8 +159,9 @@ function validateDirectory(entries) {
 async function main() {
   const raw = await readFile(SRC, 'utf8');
   const entries = JSON.parse(raw);
-  validateDirectory(entries);
   const articles = await buildArticles(ROOT, OUT_DIR);
+  entries.push(...articles.filter(post => post.directoryEntry).map(post => post.directoryEntry));
+  validateDirectory(entries);
   const prior = await loadPriorOutput();
 
   const enriched = [];
@@ -218,6 +219,8 @@ async function main() {
       pushed_at,
       license,
       license_label,
+      ...(e.benchmark_path && { benchmark_path: e.benchmark_path, publisher: e.publisher,
+        access: e.access, subject: e.subject, licenses: e.licenses }),
     };
     enriched.push(out);
 

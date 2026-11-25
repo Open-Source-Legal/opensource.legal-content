@@ -36,6 +36,7 @@ export function benchmarkIndex(posts, contribute, escape) {
       <h3><a href="${post.path}">${escape(post.title)}</a></h3>
       <p class="bench-summary">${escape(post.summary)}</p>
       <p class="bench-access"><span>Materials</span> ${escape(post.access)}</p>
+      <p class="bench-license"><span>License</span> ${post.licenseLinks}</p>
     </li>`).join('\n');
     sections.push(`<section class="bench-group" id="${id}" aria-labelledby="${id}-title">
       <div class="bench-heading"><h2 id="${id}-title">${escape(subject.title)}</h2>${subject.description ? '<p>' + escape(subject.description) + '</p>' : ''}</div>

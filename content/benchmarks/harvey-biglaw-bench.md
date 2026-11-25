@@ -3,6 +3,12 @@ title: BigLaw Bench
 subject: legal-reasoning
 publisher: Harvey
 access: Public examples and methodology
+homepage: https://www.harvey.ai/blog/introducing-biglaw-bench
+github_url: https://github.com/harveyai/biglaw-bench
+licenses:
+  - id: NOASSERTION
+    label: No repository-wide license stated
+    url: https://github.com/harveyai/biglaw-bench
 summary: See how Harvey grades legal work such as extracting deal points from share purchase agreements and analyzing litigation filings.
 date: 2026-11-25
 author: Open Source Legal
