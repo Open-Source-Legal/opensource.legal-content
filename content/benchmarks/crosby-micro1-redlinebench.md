@@ -3,6 +3,15 @@ title: Crosby–micro1 RedlineBench
 subject: contracts-documents
 publisher: Crosby and micro1
 access: Public harness and tasks
+homepage: https://huggingface.co/datasets/crosbylegal/RedlineBench
+github_url: https://github.com/crosbylegal/redline-bench
+licenses:
+  - id: MIT
+    label: MIT harness
+    url: https://github.com/crosbylegal/redline-bench/blob/main/LICENSE
+  - id: CC-BY-4.0
+    label: CC BY 4.0 tasks
+    url: https://huggingface.co/datasets/crosbylegal/RedlineBench
 summary: Evaluate a negotiating agent’s contract edits and comments across successive turns against attorney-authored rubrics.
 date: 2026-11-25
 author: Open Source Legal

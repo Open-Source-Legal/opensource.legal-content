@@ -32,19 +32,19 @@ main:has(.bench-index), .reader main:has(.bench-index) {
   width: min(76rem, calc(100% - clamp(2.5rem, 9vw, 8rem)));
   padding-block: 1.25rem 4rem;
 }
-.bench-index { --forest: #193a32; --line: #c5ccc3; --action: #203da6; }
+.bench-index { --line: var(--rule, #c5ccc3); --action: var(--blue, #203da6); }
 .bench-index [hidden] { display: none; }
 .bench-mast {
   display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(16rem, 1fr);
   align-items: center; gap: clamp(2rem, 6vw, 6rem);
-  padding: clamp(1.6rem, 4vw, 3.5rem); color: #fffdf0; background: var(--forest);
+  padding: var(--mast-inset, clamp(1.6rem, 4vw, 3.5rem)); color: var(--cream, #fffdf0); background: var(--forest, #193a32);
 }
 .bench-index .bench-mast h1 {
-  margin: 0; font: 400 clamp(3rem, 6.8vw, 6.3rem)/1 Georgia, serif;
+  margin: 0; font: var(--mast-title, 400 clamp(3rem, 6.8vw, 6.3rem)/1 Georgia, serif);
   letter-spacing: -.055em; color: inherit;
 }
-.bench-mast p { max-width: 34rem; margin: 1.25rem 0 0; color: #e1e9dd; font-size: clamp(1rem, 1.4vw, 1.2rem); line-height: 1.5; }
-.bench-publisher, .bench-access span {
+.bench-mast p { max-width: 34rem; margin: 1.25rem 0 0; color: var(--mast-copy, #e1e9dd); font-size: clamp(1rem, 1.4vw, 1.2rem); line-height: 1.5; }
+.bench-publisher, :is(.bench-access, .bench-license) span {
   font: 650 .75rem/1.4 Arial, sans-serif; letter-spacing: .07em; text-transform: uppercase;
 }
 .bench-index .bench-contents h2 { margin: 0 0 .55rem; color: #cbdebd; font: 650 .75rem/1.4 Arial, sans-serif; letter-spacing: .09em; text-transform: uppercase; }
@@ -76,9 +76,9 @@ main:has(.bench-index), .reader main:has(.bench-index) {
 .bench-index .bench-card a:hover { text-decoration-color: currentColor; }
 .bench-summary { flex: 1; margin: .8rem 0 1.15rem; line-height: 1.48; }
 .bench-access { border-top: 1px solid #dbe0d6; padding-top: .7rem; margin: 0; color: #374c40; font-size: .9rem; }
-.bench-access span { display: block; font-size: .65rem; margin-bottom: .2rem; }
+:is(.bench-access, .bench-license) span { display: block; font-size: .65rem; margin-bottom: .2rem; }
 .bench-empty { padding-block: 2.5rem; }
-.bench-empty button { cursor: pointer; background: var(--forest); color: white; border: 0; padding: .6rem 1rem; }
+.bench-empty button { cursor: pointer; background: var(--forest, #193a32); color: white; border: 0; padding: .6rem 1rem; }
 @media (max-width: 55rem) {
   .bench-group { grid-template-columns: 1fr; gap: 1.15rem; }
   .bench-mast { gap: 1.8rem; grid-template-columns: minmax(0, 1.4fr) minmax(13rem, 1fr); }
@@ -101,3 +101,7 @@ main:has(.bench-index), .reader main:has(.bench-index) {
   .bench-card:where(:last-child:nth-child(odd)) .bench-summary { grid-column: 2; grid-row: 1 / 3; margin: 0; }
   .bench-card:where(:last-child:nth-child(odd)) .bench-access { grid-column: 1 / -1; margin-top: 1rem; }
 }
+
+.bench-license { margin: .55rem 0 0; color: #374c40; font-size: .9rem; }
+.bench-license a { text-underline-offset: .15em; }
+.bench-card .bench-license { grid-column: 1 / -1; }

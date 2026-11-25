@@ -3,6 +3,12 @@ title: Harvey Legal Agent Benchmark (LAB)
 subject: legal-reasoning
 publisher: Harvey
 access: Public harness and tasks
+homepage: https://github.com/harveyai/harvey-labs
+github_url: https://github.com/harveyai/harvey-labs
+licenses:
+  - id: MIT
+    label: MIT repository
+    url: https://github.com/harveyai/harvey-labs/blob/main/LICENSE
 summary: Give an agent a legal assignment and its working documents, then score the work it produces against a task-specific rubric.
 date: 2026-11-25
 author: Open Source Legal

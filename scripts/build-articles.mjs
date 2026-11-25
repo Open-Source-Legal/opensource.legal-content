@@ -20,7 +20,7 @@ function parseArticle(filename, source, section) {
   if (!match || !match[2].trim()) throw new Error('Expected YAML front matter followed by Markdown text');
   const meta = parse(match[1]);
   const required = ['title', 'date', 'summary', 'author'];
-  if (section === 'benchmarks') required.push('publisher', 'access');
+  if (section === 'benchmarks') required.push('publisher', 'access', 'homepage');
   for (const key of required) {
     if (typeof meta?.[key] !== 'string' || !meta[key].trim()) throw new Error('Missing ' + key);
   }
@@ -32,8 +32,27 @@ function parseArticle(filename, source, section) {
   const byline = '<time datetime="' + meta.date + '">' + meta.date + '</time> · ' + escape(author);
   const context = section === 'benchmarks' ? escape(meta.publisher) + ' · ' + escape(meta.access) : '';
   const subject = section === 'benchmarks' ? benchmarkSubject(meta.subject) : undefined;
-  const searchText = [title, summary, author, meta.publisher, meta.access, subject?.title, match[2]].join(' ').toLowerCase().replace(/\s+/g, ' ');
-  return { slug, section, path: '/' + section + '/' + slug, date: meta.date, title, summary, author, byline, context, publisher: meta.publisher, access: meta.access, subject, searchText, body: markdown.render(match[2]) };
+  let directoryEntry;
+  let licenseLinks = '';
+  if (section === 'benchmarks') {
+    if (!Array.isArray(meta.licenses) || !meta.licenses.length) throw new Error('List the benchmark license terms and their sources');
+    for (const term of meta.licenses) {
+      if (![term?.id, term?.label, term?.url].every(v => typeof v === 'string' && v.trim()) ||
+          !URL.canParse(term.url) || !['http:', 'https:'].includes(new URL(term.url).protocol)) {
+        throw new Error('Each license needs an id, label and HTTP source URL');
+      }
+    }
+    licenseLinks = meta.licenses.map(term => `<a href="${escape(term.url)}">${escape(term.label)}</a>`).join(' · ');
+    directoryEntry = {
+      title, description: summary, category: 'Legal AI Datasets & Benchmarks',
+      github_url: meta.github_url, homepage: meta.homepage, license: meta.licenses[0].id,
+      license_label: meta.licenses.map(term => term.label).join(' · '),
+      licenses: meta.licenses, benchmark_path: '/benchmarks/' + slug,
+      publisher: meta.publisher, access: meta.access, subject: subject.title,
+    };
+  }
+  const searchText = [directoryEntry?.license_label, directoryEntry?.licenses.map(term => term.id).join(' '), title, summary, author, meta.publisher, meta.access, subject?.title, match[2]].join(' ').toLowerCase().replace(/\s+/g, ' ');
+  return { slug, section, path: '/' + section + '/' + slug, date: meta.date, title, summary, author, byline, context, publisher: meta.publisher, access: meta.access, subject, directoryEntry, licenseLinks, searchText, body: markdown.render(match[2]) };
 }
 
 export const collections = [
@@ -76,7 +95,7 @@ async function buildCollection(root, dist, page, collection) {
   for (const post of posts) {
     const html = `<article><a href="/${section}">All ${plural}</a><h1>${escape(post.title)}</h1>
       <p class="summary">${escape(post.summary)}</p>
-      ${post.context ? `<p>${post.context}</p>` : ''}<p class="byline">${post.context ? 'Reviewed ' : ''}${post.byline}</p>${post.body}
+      ${post.context ? `<p>${post.context}</p><p><strong>Benchmark license</strong> · ${post.licenseLinks}</p>` : ''}<p class="byline">${post.context ? 'Reviewed ' : ''}${post.byline}</p>${post.body}
       <p><a href="${repo}/edit/main/content/${section}/${post.slug}.md">Edit this ${item} on GitHub</a></p></article>`;
     await copyFile(join(source, post.slug + '.md'), join(output, post.slug + '.md'));
     const schema = {

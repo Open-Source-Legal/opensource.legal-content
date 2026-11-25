@@ -3,6 +3,11 @@ title: benchmarks.law
 subject: research-collections
 publisher: Arthur Souza Rodrigues
 access: Collection of published studies
+homepage: https://benchmarks.law/
+licenses:
+  - id: NOASSERTION
+    label: No catalog-wide license stated
+    url: https://benchmarks.law/
 summary: Browse DOCX editor trials, conversion comparisons and legal-AI studies, then follow each result to its method.
 date: 2026-11-25
 author: Open Source Legal
