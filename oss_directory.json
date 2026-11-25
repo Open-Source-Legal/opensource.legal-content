@@ -166,6 +166,15 @@
     "category": "Legal Research & Court Data"
   },
   {
+    "title": "EUR-Lex SPARQL MCP",
+    "github_url": "https://github.com/matematicsolutions/mcp-eu-sparql",
+    "homepage": null,
+    "description": "Look up EU legislation by CELEX number and Court of Justice decisions by ECLI through an MCP server backed by the Publications Office’s SPARQL endpoint. The connector is MIT-licensed. Optional GDPRhub commentary carries CC BY-NC-SA 4.0 terms.",
+    "category": "Legal Research & Court Data",
+    "license": "MIT",
+    "license_label": "MIT connector"
+  },
+  {
     "title": "Inception",
     "github_url": "https://github.com/freelawproject/inception",
     "homepage": null,
