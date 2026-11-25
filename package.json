@@ -1,0 +1,13 @@
+{
+  "name": "opensource-legal-content",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-directory.mjs",
+    "check": "npm run build -- --offline"
+  },
+  "devDependencies": {
+    "markdown-it": "^14.3.3",
+    "yaml": "^2.9.1"
+  }
+}

@@ -1,0 +1,539 @@
+[
+  {
+    "title": "python-docx",
+    "github_url": "https://github.com/python-openxml/python-docx",
+    "homepage": "https://python-docx.readthedocs.io/",
+    "description": "Python library to create, read, and modify Microsoft Word .docx files. The default choice for programmatic Word document manipulation in Python.",
+    "category": "DOCX Manipulation & Rendering"
+  },
+  {
+    "title": "docx (docx.js)",
+    "github_url": "https://github.com/dolanmiu/docx",
+    "homepage": "https://docx.js.org/",
+    "description": "Declarative TypeScript/JavaScript library for generating and modifying .docx files. Works in Node.js and the browser, no required props on the React side.",
+    "category": "DOCX Manipulation & Rendering"
+  },
+  {
+    "title": "docxtemplater",
+    "github_url": "https://github.com/open-xml-templating/docxtemplater",
+    "homepage": "https://docxtemplater.com/",
+    "description": "Template-based generator for docx, pptx, and xlsx files. Authors place {placeholders}, loops, and conditions in a Word template; the library fills it from JSON. Runs in Node.js and the browser.",
+    "category": "DOCX Manipulation & Rendering"
+  },
+  {
+    "title": "Mammoth (Python)",
+    "github_url": "https://github.com/mwilliamson/python-mammoth",
+    "homepage": null,
+    "description": "Converts .docx files to semantic HTML and Markdown. Optimized for extracting meaningful structure rather than reproducing visual fidelity.",
+    "category": "DOCX Manipulation & Rendering"
+  },
+  {
+    "title": "Mammoth.js",
+    "github_url": "https://github.com/mwilliamson/mammoth.js",
+    "homepage": null,
+    "description": "JavaScript port of Mammoth. Renders .docx documents to HTML for display in web UIs.",
+    "category": "DOCX Manipulation & Rendering"
+  },
+  {
+    "title": "Open XML SDK",
+    "github_url": "https://github.com/dotnet/Open-XML-SDK",
+    "homepage": "https://learn.microsoft.com/en-us/office/open-xml/",
+    "description": "Microsoft's official .NET library for low-level manipulation of OOXML files (Word, Excel, PowerPoint). The reference implementation when you need to work directly with the format.",
+    "category": "DOCX Manipulation & Rendering"
+  },
+  {
+    "title": "docx4j",
+    "github_url": "https://github.com/plutext/docx4j",
+    "homepage": "https://www.docx4java.org/",
+    "description": "Mature Java/JVM library for creating and manipulating Word, PowerPoint, and Excel OOXML files.",
+    "category": "DOCX Manipulation & Rendering"
+  },
+  {
+    "title": "SuperDoc",
+    "github_url": "https://github.com/superdoc-dev/superdoc",
+    "homepage": "https://www.superdoc.dev/",
+    "description": "Open-source DOCX editor for the browser, server, and AI agents. Built on ProseMirror and Yjs with real OOXML pagination, tracked changes, and CRDT-based real-time collaboration. AGPL-3.0 with a commercial license available.",
+    "category": "DOCX Manipulation & Rendering"
+  },
+  {
+    "title": "ONLYOFFICE Docs",
+    "github_url": "https://github.com/ONLYOFFICE/DocumentServer",
+    "homepage": "https://www.onlyoffice.com/",
+    "description": "Full collaborative office suite with viewers and editors for documents, spreadsheets, and presentations, fully OOXML-compatible. Heavier than a library, but a serious option for in-browser editing.",
+    "category": "DOCX Manipulation & Rendering"
+  },
+  {
+    "title": "Python-Redlines",
+    "github_url": "https://github.com/JSv4/Python-Redlines",
+    "homepage": null,
+    "description": "Python wrapper around a C# utility (using Open-XML-PowerTools' WmlComparer) to generate tracked-change redlines between two .docx files. Pragmatic stop-gap for Python-based legal tooling.",
+    "category": "Redlining & Document Comparison",
+    "featured": 4
+  },
+  {
+    "title": "Docxodus",
+    "github_url": "https://github.com/JSv4/Docxodus",
+    "homepage": "https://opensource.legal/projects/docxodus",
+    "description": "Office XML redline engine forked from OpenXMLTools and upgraded to .NET 8. Compares Word documents, detects moved sections, converts DOCX to HTML, and ships as a NuGet package, npm module (via WebAssembly), and CLI.",
+    "category": "Redlining & Document Comparison",
+    "featured": 2
+  },
+  {
+    "title": "react-docxodus-viewer",
+    "github_url": "https://github.com/JSv4/react-docxodus-viewer",
+    "homepage": null,
+    "description": "Drop-in React component for viewing and redlining DOCX files entirely in the browser via Docxodus WASM. Supports tracked changes, comments, pagination, and headers/footers.",
+    "category": "Redlining & Document Comparison",
+    "featured": 3
+  },
+  {
+    "title": "docx-redline-js",
+    "github_url": "https://github.com/AnsonLai/docx-redline-js",
+    "homepage": null,
+    "description": "Zero-dependency JavaScript OOXML engine for text reconciliation and native Microsoft Word redlines (w:ins / w:del). Useful for taking AI-generated edits and producing valid tracked-change DOCX without a .NET dependency.",
+    "category": "Redlining & Document Comparison"
+  },
+  {
+    "title": "Open-XML-PowerTools",
+    "github_url": "https://github.com/OfficeDev/Open-Xml-PowerTools",
+    "homepage": null,
+    "description": "Microsoft's original .NET toolkit including the historic WmlComparer engine. Repository is archived; the maintained community fork lives at github.com/EricWhiteDev/Open-Xml-PowerTools. Still the source-of-truth comparison engine many forks build on.",
+    "category": "Redlining & Document Comparison"
+  },
+  {
+    "title": "Docassemble",
+    "github_url": "https://github.com/jhpyle/docassemble",
+    "homepage": "https://docassemble.org/",
+    "description": "Open-source expert system for guided interviews and document assembly built on Python, YAML, and Markdown. Generates PDF, RTF, and DOCX from interactive question flows. The workhorse of legal aid and court automation.",
+    "category": "Document Assembly & Contract Automation"
+  },
+  {
+    "title": "cite",
+    "github_url": "https://github.com/Open-Source-Legal/cite",
+    "homepage": "https://opensource.legal/",
+    "description": "Self-hosted Context Management System for legal AI — the layer that turns a pile of documents into structured, queryable context for agents. Django + React, with version-controlled corpuses, custom label schemas, human and AI annotation, semantic search, and an MCP server so agents retrieve grounded, citable context instead of raw files.",
+    "category": "Context Management System (CMS)",
+    "featured": 1
+  },
+  {
+    "title": "CAML",
+    "github_url": "https://github.com/Open-Source-Legal/caml",
+    "homepage": null,
+    "description": "Corpus Article Markup Language — a human-readable markdown superset for authoring beautiful, interactive legal articles and knowledge bases. Includes a zero-dependency parser and a React renderer with themed components, interactive blocks, and customizable design tokens.",
+    "category": "Document Assembly & Contract Automation",
+    "featured": 5
+  },
+  {
+    "title": "Mike",
+    "github_url": "https://github.com/willchen96/mike",
+    "homepage": "https://mikeoss.com/",
+    "description": "Open-source legal AI platform pitched as an alternative to Harvey/Legora. Includes assistant-driven document review, projects (Vault), tabular review, and tracked-changes edits across documents within a project. AGPL-3.0.",
+    "category": "Legal AI Platforms"
+  },
+  {
+    "title": "Juriscraper",
+    "github_url": "https://github.com/freelawproject/juriscraper",
+    "homepage": "https://free.law/projects/juriscraper",
+    "description": "Python data-gathering library that scrapes opinions, PACER content, and oral arguments from US courts. Powers much of CourtListener.",
+    "category": "Legal Research & Court Data"
+  },
+  {
+    "title": "Eyecite",
+    "github_url": "https://github.com/freelawproject/eyecite",
+    "homepage": "https://free.law/projects/eyecite",
+    "description": "Python library for extracting and resolving legal citations from text. Tested against tens of millions of citations and used to annotate the Caselaw Access Project corpus.",
+    "category": "Legal Research & Court Data"
+  },
+  {
+    "title": "CourtListener",
+    "github_url": "https://github.com/freelawproject/courtlistener",
+    "homepage": "https://www.courtlistener.com/",
+    "description": "Free open case law search platform with API access covering millions of opinions. Backbone of much of the open legal-data ecosystem.",
+    "category": "Legal Research & Court Data"
+  },
+  {
+    "title": "X-Ray",
+    "github_url": "https://github.com/freelawproject/x-ray",
+    "homepage": null,
+    "description": "Tool for detecting bad PDF redactions, specifically catching cases where black rectangles or highlights are drawn over text rather than the text being properly removed. Useful for due-diligence sanity checks.",
+    "category": "Legal Research & Court Data"
+  },
+  {
+    "title": "Doctor",
+    "github_url": "https://github.com/freelawproject/doctor",
+    "homepage": null,
+    "description": "Microservice for document and audio processing tasks (extraction, conversion, OCR) used by CourtListener.",
+    "category": "Legal Research & Court Data"
+  },
+  {
+    "title": "Inception",
+    "github_url": "https://github.com/freelawproject/inception",
+    "homepage": null,
+    "description": "FastAPI microservice that generates SentenceTransformers embeddings tuned for legal documents and queries. Handles both short queries and long opinions, with optional GPU acceleration.",
+    "category": "Legal Research & Court Data"
+  },
+  {
+    "title": "Gotenberg",
+    "github_url": "https://github.com/gotenberg/gotenberg",
+    "homepage": "https://gotenberg.dev/",
+    "description": "Docker-based HTTP API for converting documents to PDF. Wraps headless Chromium (HTML/MD/URL) and LibreOffice (100+ Office formats), with merge/split/watermark/PDF-A support. Stateless and language-agnostic.",
+    "category": "Document Conversion & Processing"
+  },
+  {
+    "title": "Unstructured",
+    "github_url": "https://github.com/Unstructured-IO/unstructured",
+    "homepage": "https://unstructured.io/",
+    "description": "Open-source ETL for transforming complex documents (PDFs, DOCX, HTML, etc.) into clean structured formats for language models. Common preprocessor for RAG over contracts.",
+    "category": "Document Conversion & Processing"
+  },
+  {
+    "title": "PyMuPDF",
+    "github_url": "https://github.com/pymupdf/PyMuPDF",
+    "homepage": "https://pymupdf.readthedocs.io/",
+    "description": "High-performance Python bindings for the MuPDF library. PDF text/image extraction, rendering, and basic editing.",
+    "category": "Document Conversion & Processing"
+  },
+  {
+    "title": "pdfplumber",
+    "github_url": "https://github.com/jsvine/pdfplumber",
+    "homepage": null,
+    "description": "Python library for detailed PDF text and table extraction. Strong at handling tabular data layouts that other PDF tools struggle with.",
+    "category": "Document Conversion & Processing"
+  },
+  {
+    "title": "pdf2docx",
+    "github_url": "https://github.com/dothinking/pdf2docx",
+    "homepage": null,
+    "description": "Python library for converting PDF files to editable .docx, attempting to preserve layout, tables, and images.",
+    "category": "Document Conversion & Processing"
+  },
+  {
+    "title": "LibreOffice",
+    "github_url": "https://github.com/LibreOffice/core",
+    "homepage": "https://www.libreoffice.org/",
+    "description": "Full office suite usable from the CLI as a batch document converter (e.g. soffice --headless --convert-to docx). Underlies Gotenberg's Office conversion path. Note: primary repo is git.libreoffice.org; GitHub is a read-only mirror.",
+    "category": "Document Conversion & Processing"
+  },
+  {
+    "title": "awesome-legaltech",
+    "github_url": "https://github.com/Vaquill-AI/awesome-legaltech",
+    "homepage": null,
+    "description": "Curated list of legal tech resources covering open-source platforms, AI models, MCP servers, datasets, and standards (SALI, LEDES, LegalDocML, Akoma Ntoso).",
+    "category": "Curated Directories"
+  },
+  {
+    "title": "Open Source Legal directory",
+    "github_url": null,
+    "homepage": "https://opensource.legal/",
+    "description": "Directory of open-source tools for legal knowledge work, including document parsing, AI annotation, and the Docxodus redline engine. Maintained alongside the OpenContracts project.",
+    "category": "Curated Directories"
+  },
+  {
+    "title": "Free Law Project — Open Source Tools",
+    "github_url": null,
+    "homepage": "https://free.law/open-source-tools/",
+    "description": "Landing page for the Free Law Project's portfolio of BSD-licensed legal-data libraries (Juriscraper, Eyecite, CourtListener, X-Ray, Doctor, Inception, etc.).",
+    "category": "Curated Directories"
+  },
+  {
+    "title": "ALEA Institute",
+    "github_url": "https://github.com/alea-institute",
+    "homepage": "https://aleainstitute.ai/",
+    "description": "Non-profit research org focused on ethical AI for the legal, financial, and governmental domains. Maintains the KL3M model family, KL3M tokenizers, and the KL3M Data Project — all built on copyright-clean, legally permissible training data. Notable for being the first LLM family to obtain Fairly Trained's L-Certification.",
+    "category": "Legal NLP Libraries & Models"
+  },
+  {
+    "title": "KL3M",
+    "github_url": "https://github.com/alea-institute/kl3m-data",
+    "homepage": "https://kl3m.ai/",
+    "description": "Family of small language models, tokenizers, and embeddings purpose-built for legal, regulatory, and financial text. Trained on copyright-clean data (the KL3M Data Project — 132M+ documents, trillions of tokens). Models are on HuggingFace under alea-institute/*; tokenizers achieve 9-83% better token efficiency than GPT-4o/Llama3 on domain text. Originally developed by 273 Ventures, donated to ALEA.",
+    "category": "Legal NLP Libraries & Models"
+  },
+  {
+    "title": "CUAD (Contract Understanding Atticus Dataset)",
+    "github_url": "https://github.com/TheAtticusProject/cuad",
+    "homepage": "https://www.atticusprojectai.org/cuad",
+    "description": "Expert-annotated NLP benchmark for contract review (NeurIPS 2021). 510 commercial contracts with 13,000+ labels across 41 clause categories that lawyers look for in M&A and corporate transactions. Curated by The Atticus Project, a non-profit of legal experts. Standard benchmark for any contract-review model evaluation.",
+    "category": "Legal AI Datasets & Benchmarks"
+  },
+  {
+    "title": "OpenLaw",
+    "github_url": "https://github.com/openlawteam/openlaw-core",
+    "homepage": "https://www.openlaw.io/",
+    "description": "Scala-based protocol and markup language for programmable, blockchain-enabled legal agreements. Supports variables, conditionals, embedded clauses, e-signatures, and Ethereum smart-contract calls inside legal templates. JavaScript client at openlawteam/openlaw-client. Apache-2.0. Note: the core repos haven't seen meaningful activity since 2021-2023, so treat as a reference design rather than an actively maintained dependency.",
+    "category": "Document Assembly & Contract Automation"
+  },
+  {
+    "title": "Caselaw Access Project (Capstone)",
+    "github_url": "https://github.com/harvard-lil/capstone",
+    "homepage": "https://case.law/",
+    "description": "Harvard Law Library's digitization of all official US case law — 6.7M+ cases spanning 360 years. Capstone is the Django/Postgres backend; case.law provides the public API and bulk data. As of late 2024 native search was retired in favor of CourtListener, but the API and bulk dataset remain the most authoritative open US caselaw corpus. See also harvard-lil/cap-examples.",
+    "category": "Legal Research & Court Data"
+  },
+  {
+    "title": "OpenStates",
+    "github_url": "https://github.com/openstates/openstates-scrapers",
+    "homepage": "https://openstates.org/",
+    "description": "Aggregates legislative information (bills, votes, sponsorships, legislators) from all 50 states, DC, and Puerto Rico into a standardized API and bulk downloads. Python scraping framework with a per-state architecture; the openstates org also publishes pyopenstates and openstates-core.",
+    "category": "Legal Research & Court Data"
+  },
+  {
+    "title": "OpenEDGAR",
+    "github_url": "https://github.com/LexPredict/openedgar",
+    "homepage": "https://openedgar.io/",
+    "description": "Python framework for retrieving, parsing, and analyzing filings from the SEC's EDGAR system. Companion to LexNLP; useful when contract or disclosure analysis needs primary EDGAR data.",
+    "category": "Legal Research & Court Data"
+  },
+  {
+    "title": "LexNLP",
+    "github_url": "https://github.com/LexPredict/lexpredict-lexnlp",
+    "homepage": "https://lexpredict-lexnlp.readthedocs.io/",
+    "description": "Mature Python library for NLP and information extraction from legal and regulatory text. Handles legal-aware sentence segmentation (knows about LLC., F.3d, U.S.C.), extraction of dates/amounts/durations/PII/citations/regulatory references, and pre-trained classifiers for document and clause type. Dual-licensed AGPL-3.0 / commercial.",
+    "category": "Legal NLP Libraries & Models"
+  },
+  {
+    "title": "Blackstone",
+    "github_url": "https://github.com/ICLRandD/Blackstone",
+    "homepage": "https://research.iclr.co.uk/blackstone",
+    "description": "spaCy pipeline and model trained for NLP on long-form unstructured legal text (judgments, scholarly articles, pleadings) — the first open-source model targeted at common-law entities and concepts. Built by the research lab of the Incorporated Council of Law Reporting for England and Wales. Apache-2.0. Note: experimental and not actively maintained, but still a strong reference for UK/common-law NER.",
+    "category": "Legal NLP Libraries & Models"
+  },
+  {
+    "title": "LEGAL-BERT",
+    "github_url": null,
+    "homepage": "https://huggingface.co/nlpaueb/legal-bert-base-uncased",
+    "description": "Family of BERT models pre-trained on 12GB of English legal text (legislation, court cases, contracts) by the AUEB NLP Group. Includes a base model, a 33%-size light version (~4x faster), and sub-domain variants for contracts, EURLEX, and ECHR. Distributed via HuggingFace under nlpaueb/*. CC-BY-SA-4.0.",
+    "category": "Legal NLP Libraries & Models"
+  },
+  {
+    "title": "ContraxSuite",
+    "github_url": "https://github.com/LexPredict/lexpredict-contraxsuite",
+    "homepage": "https://contraxsuite.com/",
+    "description": "Open-source contract analytics and document exploration platform built around LexNLP. Handles document ingestion, clause and obligation extraction, search, and review workflows. The user-facing application that LexNLP was originally built to power. Dual-licensed AGPL-3.0 / commercial.",
+    "category": "Legal AI Platforms"
+  },
+  {
+    "title": "MAUD (Merger Agreement Understanding Dataset)",
+    "github_url": "https://github.com/TheAtticusProject/maud",
+    "homepage": "https://www.atticusprojectai.org/maud",
+    "description": "Expert-annotated reading-comprehension dataset for M&A merger agreements (EMNLP 2023). 39,000+ examples and 47,000+ annotations across 92 deal points, drawn from the ABA's 2021 Public Target Deal Points Study. The standard benchmark for M&A document comprehension models.",
+    "category": "Legal AI Datasets & Benchmarks"
+  },
+  {
+    "title": "ACORD (Atticus Clause Retrieval Dataset)",
+    "github_url": null,
+    "homepage": "https://www.atticusprojectai.org/acord",
+    "description": "First expert-annotated retrieval benchmark for contract drafting (ACL 2025). 114 lawyer-written queries paired with 126,000+ clause candidates rated 1-5 stars by attorneys. Focuses on heavily negotiated clauses — Limitation of Liability, Indemnification, Change of Control, Most Favored Nation. Dataset on HuggingFace at theatticusproject/acord. CC-BY-4.0.",
+    "category": "Legal AI Datasets & Benchmarks"
+  },
+  {
+    "title": "LexGLUE",
+    "github_url": "https://github.com/coastalcph/lex-glue",
+    "homepage": "https://huggingface.co/datasets/coastalcph/lex_glue",
+    "description": "Benchmark suite for legal language understanding in English (ACL 2022). Aggregates seven existing legal NLP tasks — ECtHR, SCOTUS, EUR-LEX, LEDGAR, UNFAIR-ToS, CaseHOLD — under a common evaluation harness built on HuggingFace Transformers. Standard reference point for evaluating legal foundation models.",
+    "category": "Legal AI Datasets & Benchmarks"
+  },
+  {
+    "title": "Accord Project",
+    "github_url": "https://github.com/accordproject",
+    "homepage": "https://accordproject.org/",
+    "description": "Linux Foundation project building an open stack for smart legal contracts. Cicero (TemplateMark engine combining markdown, data models, and execution logic), Concerto (data modeling — V4 reached beta in early 2026), and Template Playground/Studio for authoring, now with a TipTap-based visual editor. Runtimes are expanding into Rust and .NET, and the project has applied for associate membership in the LF's Agentic AI Foundation. Apache-2.0; outputs DOCX/PDF/HTML/markdown.",
+    "category": "Document Assembly & Contract Automation"
+  },
+  {
+    "title": "Bonterms",
+    "github_url": "https://github.com/Bonterms",
+    "homepage": "https://bonterms.com/",
+    "description": "Free, market-calibrated standard commercial agreements maintained by a standing committee of 120+ lawyers. The model: adopt a neutral Standard (Mutual NDA, Cloud Terms/SaaS, DPA, Professional Services, SLA, AI Addendum) as-is and negotiate only a short Cover Page instead of redlining the whole document. Released under CC BY 4.0 with full text on GitHub; selected as the standard agreement for Google Cloud Marketplace in 2026. A contract-standardization play in the spirit of Common Paper / oneNDA.",
+    "category": "Contracts & Templates"
+  },
+  {
+    "title": "Common Paper",
+    "github_url": "https://github.com/CommonPaper",
+    "homepage": "https://commonpaper.com/",
+    "description": "Free standard contracts for SaaS and tech deals, maintained by a committee of attorneys and released under CC BY 4.0. Covers Cloud Service Agreement, MSA, Order Form, Software License, DPA, Professional Services, Pilot, and Design Partner agreements, with SLA and AI variants. Same adopt-the-standard, edit-only-a-cover-page model as Bonterms; full text versioned on GitHub. 40,000+ downloads.",
+    "category": "Contracts & Templates"
+  },
+  {
+    "title": "oneNDA",
+    "github_url": null,
+    "homepage": "https://www.onenda.org/",
+    "description": "Crowd-sourced, open-source standard NDA written by the legal community and free to use — adopted by 1,000+ companies (Amex, Google, Novartis, Panasonic) since 2021. The standards library also includes the oneNDA Playbook, oneNDA M&A, and oneDPA (a standard Data Processing Agreement). The project grew into the Claustack community and was acquired by Law Insider in 2024, which keeps the standards free.",
+    "category": "Contracts & Templates"
+  },
+  {
+    "title": "NVCA Model Legal Documents",
+    "github_url": null,
+    "homepage": "https://nvca.org/model-legal-documents/",
+    "description": "The industry-standard suite of model documents for US venture financings, maintained by the National Venture Capital Association with law-firm working groups. Covers the Term Sheet, Stock Purchase Agreement, Certificate of Incorporation, Investors' Rights Agreement, Voting Agreement, Right of First Refusal & Co-Sale Agreement, Management Rights Letter, and Indemnification Agreement. The October 2, 2025 refresh added tranched/milestone financings, two-way national-security 'persons of concern' reps, and an expanded governance policy suite. Free to use, though not released under a formal open license — distributed as Word files from nvca.org rather than a public repo.",
+    "category": "Contracts & Templates"
+  },
+  {
+    "title": "docx-corpus",
+    "github_url": "https://github.com/superdoc-dev/docx-corpus",
+    "homepage": "https://docxcorp.us/",
+    "description": "The largest open corpus of classified DOCX documents, mined from Common Crawl and classified by type (legal, etc.) and language. Pipeline: AWS Lambda CDX filter → WARC scraper → Docling text extraction → ModernBERT classifier → HuggingFace export. Browse and download at docxcorp.us with a faceted API.",
+    "category": "Legal AI Datasets & Benchmarks"
+  },
+  {
+    "title": "ooxml-dev",
+    "github_url": "https://github.com/superdoc-dev/ooxml-dev",
+    "homepage": null,
+    "description": "Interactive OOXML (ECMA-376) reference written by people who have actually implemented it. A more navigable companion to the official ECMA-376 spec — useful when you're hand-rolling DOCX/PPTX/XLSX manipulation and need to understand a specific element or attribute.",
+    "category": "DOCX Manipulation & Rendering"
+  },
+  {
+    "title": "SALI LMSS (Legal Matter Specification Standard)",
+    "github_url": "https://github.com/sali-legal/LMSS",
+    "homepage": "https://sali.org/",
+    "description": "The legal industry's shared taxonomy for describing legal work — 18,000+ tags across services, areas of law, industries, and matter attributes, each with a stable IRI. Maintained as an OWL ontology by the SALI Alliance non-profit. Companion repo sali-legal/api provides the SALI API spec for matter-data exchange between firms, vendors, and clients. MIT (code) / CC-BY-ND (taxonomy).",
+    "category": "Legal Standards & Taxonomies"
+  },
+  {
+    "title": "python-lmss",
+    "github_url": "https://github.com/273v/python-lmss",
+    "homepage": null,
+    "description": "Python library for loading, querying, and editing the SALI LMSS ontology. Provides an LMSSGraph class with label/definition search and concept-type filtering — the practical way to use SALI tags from Python rather than parsing the OWL file yourself. By 273v (the team behind ALEA Institute / KL3M).",
+    "category": "Legal Standards & Taxonomies"
+  },
+  {
+    "title": "Microsoft Presidio",
+    "github_url": "https://github.com/microsoft/presidio",
+    "homepage": "https://microsoft.github.io/presidio/",
+    "description": "Open-source framework for detecting, redacting, masking, and anonymizing PII across text, images, and structured data. Pluggable pipeline combining spaCy/transformers/stanza NER, regex, and rule-based recognizers. Standard answer for anonymizing legal documents before sharing or training. MIT.",
+    "category": "Document Conversion & Processing"
+  },
+  {
+    "title": "Apache Tika",
+    "github_url": "https://github.com/apache/tika",
+    "homepage": "https://tika.apache.org/",
+    "description": "Content extraction toolkit covering 1,000+ file types (PDF, DOCX, PPT, images, audio, archives, etc.). Java core with REST server (tika-server) commonly used as a microservice. The default first step for any pipeline that has to ingest mixed-format legal documents into a uniform text + metadata representation. Apache-2.0.",
+    "category": "Document Conversion & Processing"
+  },
+  {
+    "title": "LegalLAMA & LeXFiles",
+    "github_url": "https://github.com/coastalcph/lexlms",
+    "homepage": "https://huggingface.co/datasets/lexlms/legal_lama",
+    "description": "Two paired releases (Chalkidis et al., ACL 2023). LeXFiles: 6M-document, 19B-token English legal corpus spanning 6 legal systems (EU, ECHR, Canada, US, UK, India) for pretraining. LegalLAMA: 8-task probing benchmark for assessing how much legal knowledge a PLM acquired in pretraining. Plus the LexLMs models trained on LeXFiles. CC-BY.",
+    "category": "Legal AI Datasets & Benchmarks"
+  },
+  {
+    "title": "CaseHOLD",
+    "github_url": "https://github.com/reglab/casehold",
+    "homepage": "https://reglab.stanford.edu/data/casehold-benchmark/",
+    "description": "53,000+ multiple-choice questions for identifying the correct holding of a cited case (Zheng & Guha et al., ICAIL 2021). Designed to be a high-domain-specificity legal benchmark where pretraining on legal text actually moves the needle — companion to the Custom Legal-BERT models. By Stanford RegLab.",
+    "category": "Legal AI Datasets & Benchmarks"
+  },
+  {
+    "title": "LegalBench",
+    "github_url": "https://github.com/HazyResearch/legalbench",
+    "homepage": "https://hazyresearch.stanford.edu/legalbench/",
+    "description": "Collaboratively built benchmark for legal reasoning in foundation models — 162 tasks structured around the IRAC framework (Issue spotting, Rule recall, Rule Application, Conclusion). Co-authored by Stanford CodeX, RegLab, and dozens of legal academics. The standard LLM-era legal-reasoning benchmark.",
+    "category": "Legal AI Datasets & Benchmarks"
+  },
+  {
+    "title": "Docling",
+    "github_url": "https://github.com/docling-project/docling",
+    "homepage": "https://www.docling.ai/",
+    "description": "Document processing library focused on getting unstructured documents (PDF, DOCX, PPTX, XLSX, HTML, images, audio) ready for gen AI. Strong PDF understanding — page layout, reading order, table structure, formulas, code, image classification — typically without OCR. Unified DoclingDocument representation; exports to Markdown, HTML, JSON, DocTags. Started by IBM Research Zurich, now hosted under LF AI & Data Foundation. Companion model Granite-Docling-258M is an ultra-compact VLM for one-shot conversion. Local execution makes it a strong fit for sensitive legal data; sibling repos cover Java bindings, MCP server, knowledge-graph extraction, and SDG. MIT.",
+    "category": "Document Conversion & Processing"
+  },
+  {
+    "title": "Tesseract",
+    "github_url": "https://github.com/tesseract-ocr/tesseract",
+    "homepage": "https://tesseract-ocr.github.io/",
+    "description": "Long-standing C++ OCR engine maintained by Google and the open-source community. 100+ language packs, runs CPU-only, mature Python (pytesseract), Node, and .NET bindings. Lower accuracy on complex layouts than newer neural engines, but unbeatable for cross-platform deployment, air-gapped environments, and use cases where you can't ship GPU. Apache-2.0.",
+    "category": "Document Conversion & Processing"
+  },
+  {
+    "title": "PaddleOCR",
+    "github_url": "https://github.com/PaddlePaddle/PaddleOCR",
+    "homepage": "https://www.paddlepaddle.org.cn/paddle/paddleocr",
+    "description": "Baidu's production-grade OCR toolkit covering 80+ languages, with strong support for Asian scripts where Tesseract struggles. Includes detection, recognition, layout analysis, table extraction, and document understanding pipelines. Useful when contracts or filings include CJK content. Apache-2.0.",
+    "category": "Document Conversion & Processing"
+  },
+  {
+    "title": "Marker",
+    "github_url": "https://github.com/datalab-to/marker",
+    "homepage": "https://www.datalab.to/",
+    "description": "Pipeline for converting PDF, DOCX, PPTX, XLSX, HTML, EPUB, and images to clean Markdown/JSON/HTML with strong table, equation, and inline-math handling. Uses Surya for layout/OCR; optional --use_llm flag for LLM-assisted refinement. Benchmarks favorably vs LlamaParse and Mathpix. Note: GPL-3.0 with commercial restrictions — self-hosting in a revenue-generating context (or in a way that competes with the Datalab API) requires a commercial license. Material for biglaw deployments.",
+    "category": "Document Conversion & Processing"
+  },
+  {
+    "title": "Surya",
+    "github_url": "https://github.com/datalab-to/surya",
+    "homepage": "https://www.datalab.to/",
+    "description": "OCR, layout analysis, reading order, and table recognition in 90+ languages. Beats Tesseract and rivals Google Cloud Vision on accuracy in published benchmarks. Powers Marker's OCR layer but also useful standalone. Same GPL-3.0 + commercial-license caveat as Marker.",
+    "category": "Document Conversion & Processing"
+  },
+  {
+    "title": "MinerU",
+    "github_url": "https://github.com/opendatalab/MinerU",
+    "homepage": "https://mineru.net/",
+    "description": "High-accuracy document parsing engine from Shanghai AI Laboratory's OpenDataLab — converts PDF, DOCX, PPTX, XLSX, images, and web pages to Markdown/JSON. Dual VLM + OCR engine, 109 languages, MCP server, and native LangChain/Dify/FastGPT integrations. Originally built for InternLM pretraining data prep. Recently relicensed from AGPLv3 to a custom 'MinerU Open Source License' based on Apache-2.0.",
+    "category": "Document Conversion & Processing"
+  },
+  {
+    "title": "Instructor",
+    "github_url": "https://github.com/567-labs/instructor",
+    "homepage": "https://python.useinstructor.com/",
+    "description": "The standard library for getting structured, validated outputs from LLMs. Define a Pydantic model, get type-safe data back with automatic retries on validation failure. Works with OpenAI, Anthropic, Google, Mistral, Cohere, Ollama, DeepSeek, and 15+ providers. Multi-language: Python, TypeScript, Go, Ruby, Elixir, Rust. The right tool for clause extraction, deal-point structuring, and any 'pull X from a contract' workflow. MIT.",
+    "category": "LLM & RAG Frameworks"
+  },
+  {
+    "title": "lambdaprompt",
+    "github_url": "https://github.com/approximatelabs/lambdaprompt",
+    "homepage": null,
+    "description": "Functional-programming interface for building LLM-driven systems — treats prompts as composable Python functions with Jinja templating, callable directly or exposed as a FastAPI service. Lighter and more pre-LangChain-era in style than newer frameworks. Smaller community than Instructor; useful as a reference for the 'prompts as functions' design pattern.",
+    "category": "LLM & RAG Frameworks"
+  },
+  {
+    "title": "Haystack",
+    "github_url": "https://github.com/deepset-ai/haystack",
+    "homepage": "https://haystack.deepset.ai/",
+    "description": "End-to-end framework for building LLM applications, retrieval-augmented generation (RAG), and search systems. Pipeline-based architecture with components for document stores, retrievers (BM25, dense, hybrid), readers, generators, and rankers. Production-grade alternative to LangChain/LlamaIndex; widely used in regulated environments where pipeline introspection matters. Apache-2.0.",
+    "category": "LLM & RAG Frameworks"
+  },
+  {
+    "title": "DSPy",
+    "github_url": "https://github.com/stanfordnlp/dspy",
+    "homepage": "https://dspy.ai/",
+    "description": "Stanford NLP's framework for programming — not prompting — language models. Define modules with signatures, then optimize prompts and few-shot examples automatically against a metric. Particularly relevant for legal tasks where prompt engineering is brittle and a benchmark like CUAD/MAUD/LegalBench can drive optimization. MIT.",
+    "category": "LLM & RAG Frameworks"
+  },
+  {
+    "title": "Outlines",
+    "github_url": "https://github.com/dottxt-ai/outlines",
+    "homepage": "https://dottxt-ai.github.io/outlines/",
+    "description": "Constrained-decoding framework that guarantees structured outputs from LLMs at the token level — the model can only emit tokens that match a Pydantic schema, regex, or context-free grammar. More rigorous than Instructor for cases where you absolutely cannot afford a parsing failure (e.g. schema-locked clause extraction, SALI-tag generation). Maintained by .txt company. Apache-2.0.",
+    "category": "LLM & RAG Frameworks"
+  },
+  {
+    "title": "PydanticAI",
+    "github_url": "https://github.com/pydantic/pydantic-ai",
+    "homepage": "https://ai.pydantic.dev/",
+    "description": "Production-grade agent framework from the Pydantic team — type-safe agents with tools, dependency injection, structured outputs, durable execution, MCP/A2A integration, and built-in evals. Positioned as 'FastAPI for agents' and complements Instructor: Instructor for one-shot extraction, PydanticAI when you need full agent loops with tool use and observability. MIT.",
+    "category": "LLM & RAG Frameworks"
+  },
+  {
+    "title": "spaCy",
+    "github_url": "https://github.com/explosion/spaCy",
+    "homepage": "https://spacy.io/",
+    "description": "Industrial-strength NLP library — tokenization, POS tagging, NER, dependency parsing, lemmatization, custom pipelines. The substrate for Blackstone (legal model), Presidio (PII detection), and many legal-NLP research projects. Production-ready and fast; the default pick for non-LLM NLP. MIT.",
+    "category": "LLM & RAG Frameworks"
+  },
+  {
+    "title": "Transformers",
+    "github_url": "https://github.com/huggingface/transformers",
+    "homepage": "https://huggingface.co/docs/transformers",
+    "description": "HuggingFace's reference library for transformer models — the canonical way to load and run LEGAL-BERT, KL3M, LegalLAMA models, custom Legal-BERT, and essentially every other legal foundation model in this catalog. PyTorch, TensorFlow, and JAX backends. Apache-2.0.",
+    "category": "LLM & RAG Frameworks"
+  },
+  {
+    "title": "vLLM",
+    "github_url": "https://github.com/vllm-project/vllm",
+    "homepage": "https://docs.vllm.ai/",
+    "description": "High-throughput, memory-efficient inference engine for LLMs. PagedAttention, continuous batching, OpenAI-compatible API. The default open-source choice when self-hosting models like KL3M, Llama, Qwen, or DeepSeek for legal workloads where keeping data on-premises matters. Apache-2.0.",
+    "category": "LLM & RAG Frameworks"
+  }
+]
