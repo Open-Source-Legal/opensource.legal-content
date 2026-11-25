@@ -60,3 +60,7 @@ Open a pull request against `main` from your fork. The build check also attaches
 To build a preview with Node 22 or newer, run `npm ci` and `npm run check`. The rendered archive and posts are under `dist/articles.html`, `dist/articles/`, `dist/blog.html` and `dist/blog/`. The normal build refreshes GitHub metadata. Merging to `main` publishes the static output through GitHub Pages. The website serves it at opensource.legal after the CDN cache refreshes.
 
 Original articles and directory descriptions are available under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Credit the author, link the license and identify changes when reusing the material. Linked projects and third-party assets retain their respective licenses. Identify any third-party material and its source in your submission.
+
+## How published work is discovered
+
+The build lists each article, blog post and benchmark in the [sitemap](https://opensource.legal/sitemap.xml), [agent index](https://opensource.legal/llms.txt) and [JSON Feed](https://opensource.legal/feed.json). Each feed item links to the canonical HTML page and its full Markdown source at the same address with `.md` appended. Use the HTML URL when citing an entry. The credited author and the editorial license also apply to the Markdown copy.
