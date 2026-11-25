@@ -1,6 +1,10 @@
 # Contribute to Open Source Legal
 
-The directory and articles are edited through GitHub pull requests. Sign in to GitHub, fork this repository and make a branch for your change. The GitHub file editor can create the fork and branch for you. Propose your change against the site's `main` branch. A maintainer reviews the diff and merges it for publication.
+The directory, articles and blog posts are edited through GitHub pull requests. Sign in to GitHub, fork this repository and make a branch for your change. The GitHub file editor can create the fork and branch for you. Propose your change against the site's `main` branch. A maintainer reviews the diff and merges it for publication.
+
+## Write a blog post
+
+Use the blog for project updates, field notes and commentary. Create a file such as `content/blog/reviewing-a-redline.md` with the same title, summary, date and author fields as an article. Its permanent URL is `/blog/reviewing-a-redline`. Each post appears in the searchable blog archive and sitemap. The same review, CLA and CC BY-NC 4.0 terms apply to both formats. [Create a blog post](https://github.com/Open-Source-Legal/opensource.legal-content/new/main/content/blog) · [Article front matter example](#write-an-article)
 
 ## Add or correct a tool
 
@@ -33,12 +37,12 @@ author: Your name
 Describe the inputs, the steps you tested and the expected result.
 ```
 
-Use Markdown headings, lists, links and fenced code blocks. The template supplies the main heading from the title. Quote YAML values containing a colon followed by a space. The date determines newest-first ordering, with filename breaking ties. Merging publishes the article immediately, including articles with a future date. Every article gets a page, an archive listing, full-text search and a sitemap entry. The latest three appear on the homepage.
+Use Markdown headings, lists, links and fenced code blocks. The template supplies the main heading from the title. Quote YAML values containing a colon followed by a space. The date determines newest-first ordering, with filename breaking ties. Merging publishes the article immediately, including articles with a future date. Every article gets a page, an archive listing, full-text search and a sitemap entry. The homepage lists the three newest articles and blog posts together.
 
 ## Review and preview
 
 Open a pull request against `main` from your fork. The build check also attaches an archive screenshot for reviewers. Read [the contributor agreement](CLA.md) and sign using the instruction on the pull request. Each contributor signs for their own work. A maintainer reviews the submission and the automated check validates the directory and renders the articles.
 
-To build a preview with Node 22 or newer, run `npm ci` and `npm run check`. The rendered archive and posts are in `dist/articles.html` and `dist/articles/`. The normal build refreshes GitHub metadata. Merging to `main` publishes the static output through GitHub Pages. The website serves it at opensource.legal after the CDN cache refreshes.
+To build a preview with Node 22 or newer, run `npm ci` and `npm run check`. The rendered archive and posts are under `dist/articles.html`, `dist/articles/`, `dist/blog.html` and `dist/blog/`. The normal build refreshes GitHub metadata. Merging to `main` publishes the static output through GitHub Pages. The website serves it at opensource.legal after the CDN cache refreshes.
 
 Original articles and directory descriptions are available under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Credit the author, link the license and identify changes when reusing the material. Linked projects and third-party assets retain their respective licenses. Identify any third-party material and its source in your submission.
