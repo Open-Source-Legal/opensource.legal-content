@@ -1,0 +1,11 @@
+# Designing for Open Source Legal
+
+Use the Benchmarks index as the visual reference for collection pages. A reader can find a subject, see what a tool does and decide whether to open it. For articles and how-tos, give the prose a quieter, single-column layout. [Desktop reference](docs/previews/benchmark-index-desktop.webp) · [Mobile reference](docs/previews/benchmark-index-mobile.webp)
+
+- **Start with the reader’s task.** “Contracts & documents” tells a reader where to find a redlining test. “Featured resources” tells them little. Give each section a useful name and add a sentence only when it clarifies what belongs there.
+- **Give the page one visual focal point.** The index opens with a large Georgia title in cream on forest green. The subject links beside it earn that space by taking readers straight to the entries. Use the site’s warm paper, dark ink and cobalt links for the rest. Set navigation and metadata in the site sans serif. Use thin rules, aligned edges and generous space between subjects to show hierarchy.
+- **Choose the layout to fit the material.** A wide index can put section headings in a left column and comparable entries to the right. A how-to needs room for instructions, code and examples in reading order. On phones, put each heading immediately above its entries and keep subject links easy to reach.
+- **Give entries a reason to be opened.** Lead with a linked project name and a concrete description. Surface the detail readers need to choose between entries. For a benchmark, “Public harness and fixtures” earns its space. A decorative badge or a second “Learn more” link can go.
+- **Check the page with real content.** Try a long project title, a section with one entry and a narrow phone screen. Follow the headings and links by keyboard. Where there is search, try an empty result and recover from it. Keep section links and reading order usable with JavaScript disabled.
+
+Build on the semantic HTML in `scripts/benchmark-index.mjs` and the scoped styles in `templates/articles.css`. The Worker supplies the shared site navigation and typography. Keep subjects, titles and descriptions in the existing PR-editable content wherever the schema supports them.
