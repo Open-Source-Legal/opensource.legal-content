@@ -273,6 +273,15 @@
     "category": "Document Assembly & Contract Automation"
   },
   {
+    "title": "Lebanese Legislation",
+    "github_url": "https://github.com/taktekhq/lebanese-legislation",
+    "homepage": "https://lebaneselegislation.com/data/",
+    "description": "Independent Arabic and French legal corpus with downloadable Parquet tables, amendment links and references to source documents. The dataset requests credit to the Lebanese University source centre. Machine readings and editorial corrections have separate provenance.",
+    "category": "Legal Research & Court Data",
+    "license": "LicenseRef-Source-Terms",
+    "license_label": "Dataset source terms"
+  },
+  {
     "title": "Caselaw Access Project (Capstone)",
     "github_url": "https://github.com/harvard-lil/capstone",
     "homepage": "https://case.law/",
