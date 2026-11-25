@@ -91,10 +91,13 @@ function buildLlmsTxt(enriched, articles) {
   lines.push(`- [Directory data (JSON)](${SITE}/directory.json): Machine-readable directory with stars, language, and license per project.`);
   lines.push('');
 
-  lines.push('## Articles');
-  lines.push(`- [Article index](${SITE}/articles)`);
-  for (const article of articles) lines.push(`- [${article.title}](${SITE}${article.path}): ${article.summary}`);
-  lines.push('');
+  for (const [section, title] of [['articles', 'Articles'], ['blog', 'Blog']]) {
+    lines.push('## ' + title, '', `- [${title} index](${SITE}/${section})`);
+    for (const post of articles.filter(post => post.section === section)) {
+      lines.push(`- [${post.title}](${SITE}${post.path}): ${post.summary}`);
+    }
+    lines.push('');
+  }
 
   const byCategory = new Map();
   for (const e of enriched) {
@@ -118,7 +121,7 @@ function buildLlmsTxt(enriched, articles) {
 // Sitemap of the actual site pages (project links are external GitHub URLs, so they
 // belong in llms.txt / the directory, not the sitemap).
 function buildSitemap(articles) {
-  const paths = ['/', '/directory', '/articles', ...articles.map(article => article.path)];
+  const paths = ['/', '/directory', '/articles', '/blog', ...articles.map(article => article.path)];
   const urls = paths.map(path => `  <url><loc>${SITE}${path}</loc></url>`).join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
 }

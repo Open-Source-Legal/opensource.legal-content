@@ -8,7 +8,7 @@ const escape = markdown.utils.escapeHtml;
 const repo = 'https://github.com/Open-Source-Legal/opensource.legal-content';
 const contribute = repo + '/blob/main/CONTRIBUTING.md';
 
-function parseArticle(filename, source) {
+function parseArticle(filename, source, section) {
   const slug = filename.slice(0, -3);
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) || slug === 'index') {
     throw new Error('Use a lowercase, hyphenated filename other than index.md');
@@ -26,64 +26,90 @@ function parseArticle(filename, source) {
   const { title, summary, author } = meta;
   const byline = '<time datetime="' + meta.date + '">' + meta.date + '</time> · ' + escape(author);
   const searchText = [title, summary, author, match[2]].join(' ').toLowerCase().replace(/\s+/g, ' ');
-  return { slug, path: '/articles/' + slug, date: meta.date, title, summary, byline, searchText, body: markdown.render(match[2]) };
+  return { slug, section, path: '/' + section + '/' + slug, date: meta.date, title, summary, byline, searchText, body: markdown.render(match[2]) };
+}
+
+const collections = [
+  { section: 'articles', title: 'Articles', item: 'article', plural: 'articles',
+    summary: 'Practical guides to using open source legal tools and datasets.', submit: 'Submit an article', anchor: 'write-an-article' },
+  { section: 'blog', title: 'Blog', item: 'post', plural: 'posts',
+    summary: 'Project updates, field notes and observations from the open source legal community.', submit: 'Submit a blog post', anchor: 'write-a-blog-post' },
+];
+
+function newestFirst(a, b) {
+  return b.date.localeCompare(a.date) || a.path.localeCompare(b.path);
+}
+
+async function buildCollection(root, dist, page, collection) {
+  const { section, title, item, plural, summary, submit, anchor } = collection;
+  const source = join(root, 'content', section);
+  const files = await readdir(source, { withFileTypes: true }).catch(error => {
+    if (error.code === 'ENOENT') return [];
+    throw error;
+  });
+  const posts = [];
+  for (const entry of files) {
+    const relative = 'content/' + section + '/' + entry.name;
+    if (!entry.isFile() || !entry.name.endsWith('.md')) throw new Error('Expected a Markdown file: ' + relative);
+    try {
+      posts.push(parseArticle(entry.name, await readFile(join(source, entry.name), 'utf8'), section));
+    } catch (error) {
+      throw new Error(relative + ': ' + error.message);
+    }
+  }
+  posts.sort(newestFirst);
+  const output = join(dist, section);
+  await mkdir(output, { recursive: true });
+  const filenames = new Set(posts.map(post => post.slug + '.html'));
+  for (const filename of await readdir(output)) {
+    if (filename.endsWith('.html') && !filenames.has(filename)) await unlink(join(output, filename));
+  }
+  for (const post of posts) {
+    const html = `<article><a href="/${section}">All ${plural}</a><h1>${escape(post.title)}</h1>
+      <p class="summary">${escape(post.summary)}</p><p class="byline">${post.byline}</p>${post.body}
+      <p><a href="${repo}/edit/main/content/${section}/${post.slug}.md">Edit this ${item} on GitHub</a></p></article>`;
+    await writeFile(join(output, post.slug + '.html'), page(post.title, post.summary, post.path, html));
+  }
+
+  const rows = posts.map(post => `<li data-search="${escape(post.searchText)}">
+    <p class="byline">${post.byline}</p><h2><a href="${post.path}">${escape(post.title)}</a></h2>
+    <p>${escape(post.summary)}</p></li>`).join('\n');
+  const listing = rows ? `<div hidden id="search-controls"><label for="article-search">Search ${plural}</label>
+    <input type="search" id="article-search" data-singular="${item}" data-plural="${plural}"><p id="result-count" role="status"></p></div>
+    <ul class="results">${rows}</ul><script defer src="/article-search.js"></script>` : `<p>No ${plural} have been published yet.</p>`;
+  const archive = `<h1>${title}</h1><p class="summary">${summary}</p>${listing}
+    <a href="${contribute}#${anchor}">${submit}</a>`;
+  await writeFile(join(dist, section + '.html'), page(title, summary, '/' + section, archive));
+  return posts;
+}
+
+function latestList(posts, mixed) {
+  if (!posts.length) return '';
+  const links = posts.slice(0, 3).map(post => {
+    const label = post.section === 'blog' ? 'Blog' : 'Article';
+    const meta = mixed ? `<small>${label} · <time datetime="${post.date}">${post.date}</time></small>` : '';
+    return `<li>${meta}<a href="${post.path}">${escape(post.title)}</a><p>${escape(post.summary)}</p></li>`;
+  }).join('\n');
+  const browse = mixed ? '<a href="/articles">All articles</a> · <a href="/blog">All blog posts</a>' : '<a href="/articles">Browse all articles</a>';
+  return `<section class="latest-articles"><h2>${mixed ? 'Latest articles and posts' : 'Latest articles'}</h2><ul>${links}</ul>${browse}</section>`;
 }
 
 export async function buildArticles(root, dist) {
-  const source = join(root, 'content/articles');
-  const assets = dist;
-  const output = join(assets, 'articles');
   const template = await readFile(join(root, 'templates/article-page.html'), 'utf8');
   function page(title, description, path, content) {
     const fields = { title: escape(title), description: escape(description), path, content, contribute };
     return template.replace(/{{(\w+)}}/g, (_, key) => fields[key]);
   }
-
-  const articles = [];
-  const files = await readdir(source, { withFileTypes: true }).catch(error => {
-    if (error.code === 'ENOENT') return [];
-    throw error;
-  });
-  for (const entry of files) {
-    if (!entry.isFile() || !entry.name.endsWith('.md')) throw new Error('Expected a Markdown file in content/articles: ' + entry.name);
-    try {
-      articles.push(parseArticle(entry.name, await readFile(join(source, entry.name), 'utf8')));
-    } catch (error) {
-      throw new Error('content/articles/' + entry.name + ': ' + error.message);
-    }
+  const posts = [];
+  for (const collection of collections) {
+    posts.push(...await buildCollection(root, dist, page, collection));
   }
-  articles.sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
-  await mkdir(output, { recursive: true });
-  const filenames = new Set(articles.map(article => article.slug + '.html'));
-  for (const filename of await readdir(output)) {
-    if (filename.endsWith('.html') && !filenames.has(filename)) await unlink(join(output, filename));
-  }
-  for (const article of articles) {
-    const { title, summary, path, slug, byline, body } = article;
-    const html = `<article><a href="/articles">All articles</a><h1>${escape(title)}</h1>
-      <p class="summary">${escape(summary)}</p><p class="byline">${byline}</p>${body}
-      <p><a href="${repo}/edit/main/content/articles/${slug}.md">Edit this article on GitHub</a></p></article>`;
-    await writeFile(join(output, slug + '.html'), page(title, summary, path, html));
-  }
-
-  const rows = articles.map(article => `<li data-search="${escape(article.searchText)}">
-    <p class="byline">${article.byline}</p><h2><a href="${article.path}">${escape(article.title)}</a></h2>
-    <p>${escape(article.summary)}</p></li>`).join('\n');
-  const archive = `<h1>Articles</h1><p class="summary">Guides and field notes on open source legal tools.</p>
-    <div hidden id="search-controls"><label for="article-search">Search articles</label>
-    <input type="search" id="article-search"><p id="result-count" role="status"></p></div>
-    <ul class="results">${rows}</ul>
-    <a href="${contribute}#write-an-article">Submit an article</a>
-    <script defer src="/article-search.js"></script>`;
-  await writeFile(join(assets, 'articles.html'), page('Articles', 'Search guides and field notes on open source legal tools.', '/articles', archive));
+  posts.sort(newestFirst);
   for (const name of ['articles.css', 'article-search.js']) {
-    await copyFile(join(root, 'templates', name), join(assets, name));
+    await copyFile(join(root, 'templates', name), join(dist, name));
   }
-
-  const links = articles.slice(0, 3).map(article =>
-    `<li><a href="${article.path}">${escape(article.title)}</a><p>${escape(article.summary)}</p></li>`
-  ).join('\n');
-  const latest = links ? `<section class="latest-articles"><h2>Latest articles</h2><ul>${links}</ul><a href="/articles">Browse all articles</a></section>` : '';
-  await writeFile(join(dist, 'latest-articles.html'), latest);
-  return articles;
+  // The deployed legacy homepage still requests its article-only fragment.
+  await writeFile(join(dist, 'latest-articles.html'), latestList(posts.filter(post => post.section === 'articles'), false));
+  await writeFile(join(dist, 'latest-writing.html'), latestList(posts, true));
+  return posts;
 }

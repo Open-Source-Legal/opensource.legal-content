@@ -10,7 +10,9 @@ function filterArticles() {
     row.hidden = !terms.every(term => row.dataset.search.includes(term));
     if (!row.hidden) matches++;
   }
-  status.textContent = matches ? matches + (matches === 1 ? ' article' : ' articles') : 'No articles match this search.';
+  const singular = field.dataset.singular || 'article';
+  const plural = field.dataset.plural || 'articles';
+  status.textContent = matches ? matches + ' ' + (matches === 1 ? singular : plural) : 'No ' + plural + ' match this search.';
 }
 
 field.addEventListener('input', filterArticles);
