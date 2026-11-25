@@ -2,6 +2,7 @@ import { copyFile, mkdir, readdir, readFile, unlink, writeFile } from 'node:fs/p
 import { join } from 'node:path';
 import MarkdownIt from 'markdown-it';
 import { parse } from 'yaml';
+import { benchmarkIndex, benchmarkSubject } from './benchmark-index.mjs';
 
 const markdown = new MarkdownIt({ html: false });
 const escape = markdown.utils.escapeHtml;
@@ -28,8 +29,9 @@ function parseArticle(filename, source, section) {
   const { title, summary, author } = meta;
   const byline = '<time datetime="' + meta.date + '">' + meta.date + '</time> · ' + escape(author);
   const context = section === 'benchmarks' ? escape(meta.publisher) + ' · ' + escape(meta.access) : '';
-  const searchText = [title, summary, author, meta.publisher, meta.access, match[2]].join(' ').toLowerCase().replace(/\s+/g, ' ');
-  return { slug, section, path: '/' + section + '/' + slug, date: meta.date, title, summary, byline, context, searchText, body: markdown.render(match[2]) };
+  const subject = section === 'benchmarks' ? benchmarkSubject(meta.subject) : undefined;
+  const searchText = [title, summary, author, meta.publisher, meta.access, subject?.title, match[2]].join(' ').toLowerCase().replace(/\s+/g, ' ');
+  return { slug, section, path: '/' + section + '/' + slug, date: meta.date, title, summary, byline, context, publisher: meta.publisher, access: meta.access, subject, searchText, body: markdown.render(match[2]) };
 }
 
 export const collections = [
@@ -46,7 +48,7 @@ function newestFirst(a, b) {
 }
 
 async function buildCollection(root, dist, page, collection) {
-  const { section, title, item, plural, summary, submit, anchor } = collection;
+  const { section, title, item, plural, summary } = collection;
   const source = join(root, 'content', section);
   const files = await readdir(source, { withFileTypes: true }).catch(error => {
     if (error.code === 'ENOENT') return [];
@@ -77,16 +79,22 @@ async function buildCollection(root, dist, page, collection) {
     await writeFile(join(output, post.slug + '.html'), page(post.title, post.summary, post.path, html));
   }
 
+  const archive = section === 'benchmarks'
+    ? benchmarkIndex(posts, contribute, escape)
+    : writingIndex(posts, collection);
+  await writeFile(join(dist, section + '.html'), page(title, summary, '/' + section, archive));
+  return posts;
+}
+
+function writingIndex(posts, { title, item, plural, summary, anchor, submit }) {
   const rows = posts.map(post => `<li data-search="${escape(post.searchText)}">
     <p class="byline">${post.context || post.byline}</p><h2><a href="${post.path}">${escape(post.title)}</a></h2>
     <p>${escape(post.summary)}</p></li>`).join('\n');
   const listing = rows ? `<div hidden id="search-controls"><label for="article-search">Search ${plural}</label>
     <input type="search" id="article-search" data-singular="${item}" data-plural="${plural}"><p id="result-count" role="status"></p></div>
     <ul class="results">${rows}</ul><script defer src="/article-search.js"></script>` : `<p>No ${plural} have been published yet.</p>`;
-  const archive = `<h1>${title}</h1><p class="summary">${summary}</p>${listing}
+  return `<h1>${title}</h1><p class="summary">${summary}</p>${listing}
     <a href="${contribute}#${anchor}">${submit}</a>`;
-  await writeFile(join(dist, section + '.html'), page(title, summary, '/' + section, archive));
-  return posts;
 }
 
 function latestList(posts, mixed) {

@@ -26,3 +26,78 @@ input { display: block; width: 100%; margin-top: .25rem; padding: .65rem; border
 .results h2 { font-size: 1.6rem; margin: .25rem 0; }
 .results p { margin: .5rem 0; }
 footer { border-top: 1px solid #deded7; padding: 1rem 0 2.5rem; }
+
+/* The benchmark archive is a subject index; detail pages keep the reading measure. */
+main:has(.bench-index), .reader main:has(.bench-index) {
+  width: min(76rem, calc(100% - clamp(2.5rem, 9vw, 8rem)));
+  padding-block: 1.25rem 4rem;
+}
+.bench-index { --forest: #193a32; --line: #c5ccc3; --action: #203da6; }
+.bench-index [hidden] { display: none; }
+.bench-mast {
+  display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(16rem, 1fr);
+  align-items: center; gap: clamp(2rem, 6vw, 6rem);
+  padding: clamp(1.6rem, 4vw, 3.5rem); color: #fffdf0; background: var(--forest);
+}
+.bench-index .bench-mast h1 {
+  margin: 0; font: 400 clamp(3rem, 6.8vw, 6.3rem)/1 Georgia, serif;
+  letter-spacing: -.055em; color: inherit;
+}
+.bench-mast p { max-width: 34rem; margin: 1.25rem 0 0; color: #e1e9dd; font-size: clamp(1rem, 1.4vw, 1.2rem); line-height: 1.5; }
+.bench-publisher, .bench-access span {
+  font: 650 .75rem/1.4 Arial, sans-serif; letter-spacing: .07em; text-transform: uppercase;
+}
+.bench-index .bench-contents h2 { margin: 0 0 .55rem; color: #cbdebd; font: 650 .75rem/1.4 Arial, sans-serif; letter-spacing: .09em; text-transform: uppercase; }
+.bench-contents ul, .bench-entries { list-style: none; padding: 0; margin: 0; }
+.bench-contents li { border-top: 1px solid #577267; }
+.bench-index .bench-contents a { display: flex; justify-content: space-between; align-items: center; gap: .75rem; padding-block: .42rem; text-decoration: none; color: inherit; }
+.bench-index .bench-contents a:hover span:first-child { text-decoration: underline; }
+.bench-contents a:focus-visible { outline: 2px solid #f1edba; outline-offset: 2px; }
+.bench-total { color: #cbdebd; font: .82rem/1.4 ui-monospace, monospace; }
+.bench-tools { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem 1.25rem; padding-block: 1.15rem; border-bottom: 1px solid var(--line); }
+.bench-tools #search-controls { display: flex; align-items: center; gap: 1rem; }
+.bench-tools #search-controls[hidden] { display: none; }
+.bench-tools label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.bench-tools input { width: min(18rem, 50vw); margin: 0; padding: .55rem .8rem; border: 1px solid #88958c; border-radius: .2rem; font: inherit; background: #fffefb; color: #18251f; }
+.bench-tools #result-count { font-size: .87rem; color: #4e5c52; }
+.bench-suggest { font-weight: 600; text-decoration-thickness: 1px; }
+.bench-group { display: grid; grid-template-columns: minmax(11rem, 1fr) minmax(0, 3fr); gap: clamp(1.5rem, 4vw, 4rem); padding-block: clamp(1.75rem, 3.5vw, 3rem); border-bottom: 1px solid var(--line); scroll-margin-top: 1rem; }
+.bench-heading { align-self: start; }
+.bench-heading::before { content: ''; display: block; width: 2.5rem; height: .25rem; margin-bottom: .85rem; background: #427869; }
+#legal-reasoning .bench-heading::before { background: #4d62a3; }
+#research-collections .bench-heading::before { background: #956432; }
+.bench-index .bench-heading h2, .bench-empty h2 { margin: 0; font: 500 clamp(1.6rem, 2.5vw, 2.3rem)/1.08 Georgia, serif; letter-spacing: -.035em; text-wrap: balance; }
+.bench-heading p { margin: .65rem 0 0; font-size: .94rem; line-height: 1.5; color: #4e5c52; max-width: 35rem; }
+.bench-entries { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: start; gap: .9rem; }
+.bench-card { display: flex; flex-direction: column; padding: clamp(1.15rem, 1.8vw, 1.55rem); border: 1px solid var(--line); background: #fffefa; }
+.bench-publisher { margin: 0 0 .6rem; color: #52635a; }
+.bench-index .bench-card h3 { margin: 0; font: 500 clamp(1.4rem, 2vw, 1.9rem)/1.16 Georgia, serif; letter-spacing: -.03em; }
+.bench-index .bench-card a { color: var(--action); text-decoration-thickness: 1px; text-decoration-color: #a4adcd; }
+.bench-index .bench-card a:hover { text-decoration-color: currentColor; }
+.bench-summary { flex: 1; margin: .8rem 0 1.15rem; line-height: 1.48; }
+.bench-access { border-top: 1px solid #dbe0d6; padding-top: .7rem; margin: 0; color: #374c40; font-size: .9rem; }
+.bench-access span { display: block; font-size: .65rem; margin-bottom: .2rem; }
+.bench-empty { padding-block: 2.5rem; }
+.bench-empty button { cursor: pointer; background: var(--forest); color: white; border: 0; padding: .6rem 1rem; }
+@media (max-width: 55rem) {
+  .bench-group { grid-template-columns: 1fr; gap: 1.15rem; }
+  .bench-mast { gap: 1.8rem; grid-template-columns: minmax(0, 1.4fr) minmax(13rem, 1fr); }
+}
+@media (max-width: 39rem) {
+  .bench-mast, .bench-entries { grid-template-columns: 1fr; }
+  .bench-mast { padding: 1.35rem; gap: 1.35rem; }
+  .bench-mast p { margin-top: .8rem; }
+  .bench-tools { align-items: start; }
+  .bench-tools #search-controls { width: 100%; }
+  .bench-tools input { flex: 1; min-width: 0; }
+  .bench-group { padding-block: 1.55rem; }
+}
+@media (min-width: 50rem) {
+  .bench-card:where(:last-child:nth-child(odd)) {
+    grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr;
+    align-content: start; column-gap: 2rem;
+  }
+  .bench-card:where(:last-child:nth-child(odd)) h3 { grid-column: 1; }
+  .bench-card:where(:last-child:nth-child(odd)) .bench-summary { grid-column: 2; grid-row: 1 / 3; margin: 0; }
+  .bench-card:where(:last-child:nth-child(odd)) .bench-access { grid-column: 1 / -1; margin-top: 1rem; }
+}
