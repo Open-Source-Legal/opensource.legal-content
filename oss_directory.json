@@ -306,6 +306,15 @@
     "category": "Legal NLP Libraries & Models"
   },
   {
+    "title": "AI WorkDeck",
+    "github_url": "https://github.com/AI-WorkDeck/aiworkdeck",
+    "homepage": "https://www.aiworkdeck.com/",
+    "description": "Review proposed edits to Word documents as tracked changes in a matter workspace. A reviewer can accept or reject each change and consult linked source material. The desktop project is licensed under AGPL-3.0-or-later.",
+    "category": "Legal AI Platforms",
+    "license": "AGPL-3.0-or-later",
+    "license_label": "AGPL-3.0-or-later"
+  },
+  {
     "title": "ContraxSuite",
     "github_url": "https://github.com/LexPredict/lexpredict-contraxsuite",
     "homepage": "https://contraxsuite.com/",
