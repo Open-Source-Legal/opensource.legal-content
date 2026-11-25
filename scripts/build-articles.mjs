@@ -16,7 +16,9 @@ function parseArticle(filename, source, section) {
   const match = /^---\n([\s\S]*?)\n---\n([\s\S]+)$/.exec(source.replace(/\r\n/g, '\n'));
   if (!match || !match[2].trim()) throw new Error('Expected YAML front matter followed by Markdown text');
   const meta = parse(match[1]);
-  for (const key of ['title', 'date', 'summary', 'author']) {
+  const required = ['title', 'date', 'summary', 'author'];
+  if (section === 'benchmarks') required.push('publisher', 'access');
+  for (const key of required) {
     if (typeof meta?.[key] !== 'string' || !meta[key].trim()) throw new Error('Missing ' + key);
   }
   const date = new Date(meta.date + 'T00:00:00Z');
@@ -25,13 +27,16 @@ function parseArticle(filename, source, section) {
   }
   const { title, summary, author } = meta;
   const byline = '<time datetime="' + meta.date + '">' + meta.date + '</time> · ' + escape(author);
-  const searchText = [title, summary, author, match[2]].join(' ').toLowerCase().replace(/\s+/g, ' ');
-  return { slug, section, path: '/' + section + '/' + slug, date: meta.date, title, summary, byline, searchText, body: markdown.render(match[2]) };
+  const context = section === 'benchmarks' ? escape(meta.publisher) + ' · ' + escape(meta.access) : '';
+  const searchText = [title, summary, author, meta.publisher, meta.access, match[2]].join(' ').toLowerCase().replace(/\s+/g, ' ');
+  return { slug, section, path: '/' + section + '/' + slug, date: meta.date, title, summary, byline, context, searchText, body: markdown.render(match[2]) };
 }
 
-const collections = [
+export const collections = [
   { section: 'articles', title: 'Articles', item: 'article', plural: 'articles',
     summary: 'Practical guides to using open source legal tools and datasets.', submit: 'Submit an article', anchor: 'write-an-article' },
+  { section: 'benchmarks', title: 'Benchmarks', item: 'benchmark', plural: 'benchmarks',
+    summary: 'Find evaluations for legal research, contract negotiation and document tools. See what each test measures and which materials you can use.', submit: 'Suggest a benchmark', anchor: 'add-a-benchmark' },
   { section: 'blog', title: 'Blog', item: 'post', plural: 'posts',
     summary: 'Project updates, field notes and observations from the open source legal community.', submit: 'Submit a blog post', anchor: 'write-a-blog-post' },
 ];
@@ -66,13 +71,14 @@ async function buildCollection(root, dist, page, collection) {
   }
   for (const post of posts) {
     const html = `<article><a href="/${section}">All ${plural}</a><h1>${escape(post.title)}</h1>
-      <p class="summary">${escape(post.summary)}</p><p class="byline">${post.byline}</p>${post.body}
+      <p class="summary">${escape(post.summary)}</p>
+      ${post.context ? `<p>${post.context}</p>` : ''}<p class="byline">${post.context ? 'Reviewed ' : ''}${post.byline}</p>${post.body}
       <p><a href="${repo}/edit/main/content/${section}/${post.slug}.md">Edit this ${item} on GitHub</a></p></article>`;
     await writeFile(join(output, post.slug + '.html'), page(post.title, post.summary, post.path, html));
   }
 
   const rows = posts.map(post => `<li data-search="${escape(post.searchText)}">
-    <p class="byline">${post.byline}</p><h2><a href="${post.path}">${escape(post.title)}</a></h2>
+    <p class="byline">${post.context || post.byline}</p><h2><a href="${post.path}">${escape(post.title)}</a></h2>
     <p>${escape(post.summary)}</p></li>`).join('\n');
   const listing = rows ? `<div hidden id="search-controls"><label for="article-search">Search ${plural}</label>
     <input type="search" id="article-search" data-singular="${item}" data-plural="${plural}"><p id="result-count" role="status"></p></div>
@@ -110,6 +116,6 @@ export async function buildArticles(root, dist) {
   }
   // The deployed legacy homepage still requests its article-only fragment.
   await writeFile(join(dist, 'latest-articles.html'), latestList(posts.filter(post => post.section === 'articles'), false));
-  await writeFile(join(dist, 'latest-writing.html'), latestList(posts, true));
+  await writeFile(join(dist, 'latest-writing.html'), latestList(posts.filter(post => post.section !== 'benchmarks'), true));
   return posts;
 }
