@@ -145,6 +145,15 @@
     "category": "Legal Research & Court Data"
   },
   {
+    "title": "OpenCaseLaw Switzerland",
+    "github_url": "https://github.com/jonashertner/opencaselaw",
+    "homepage": "https://opencaselaw.ch/",
+    "description": "Search Swiss federal and cantonal decisions in multiple languages, download court-level Parquet files, and follow each record back to its source. The code is MIT. CC0 covers the compilation and added metadata. European Court of Human Rights texts available through the service have separate terms.",
+    "category": "Legal Research & Court Data",
+    "license": "CC0-1.0",
+    "license_label": "CC0 compilation · MIT code"
+  },
+  {
     "title": "CourtListener",
     "github_url": "https://github.com/freelawproject/courtlistener",
     "homepage": "https://www.courtlistener.com/",
