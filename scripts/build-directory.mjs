@@ -82,7 +82,7 @@ function buildLlmsTxt(enriched, articles) {
   lines.push('');
   lines.push('> Open source tools for understanding how law, contracts, and legal systems shape our world. opensource.legal curates and builds community-maintained software for legal document analysis, redlining, annotation, and knowledge sharing.');
   lines.push('');
-  lines.push('Open Source Legal is a community publishing open tools and a curated directory of open source legal-technology projects. All listed projects are open source; the GitHub organization is https://github.com/Open-Source-Legal.');
+  lines.push('Credit the author and Open Source Legal when reusing original editorial content under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Linked projects and datasets have their own terms. Cite the HTML page as the canonical source.');
   lines.push('');
   lines.push('## Site');
   lines.push('');
@@ -91,10 +91,12 @@ function buildLlmsTxt(enriched, articles) {
   lines.push(`- [Directory data (JSON)](${SITE}/directory.json): Machine-readable directory with stars, language, and license per project.`);
   lines.push('');
 
+  lines.push(`- [Editorial feed (JSON Feed)](${SITE}/feed.json): Latest articles, blog posts and benchmark notes with dates, canonical URLs and Markdown downloads.`);
+  lines.push(`- [Sitemap](${SITE}/sitemap.xml): Canonical HTML pages.`, '');
   for (const { section, title } of collections) {
     lines.push('## ' + title, '', `- [${title} index](${SITE}/${section})`);
     for (const post of articles.filter(post => post.section === section)) {
-      lines.push(`- [${post.title}](${SITE}${post.path}): ${post.summary}`);
+      lines.push(`- [${post.title}](${SITE}${post.path}) ([Markdown](${SITE}${post.path}.md)): ${post.summary}`);
     }
     lines.push('');
   }
@@ -121,7 +123,7 @@ function buildLlmsTxt(enriched, articles) {
 // Sitemap of the actual site pages (project links are external GitHub URLs, so they
 // belong in llms.txt / the directory, not the sitemap).
 function buildSitemap(articles) {
-  const paths = ['/', '/directory', ...collections.map(({ section }) => '/' + section), ...articles.map(article => article.path)];
+  const paths = ['/', '/directory', '/stack-diagram', ...collections.map(({ section }) => '/' + section), ...articles.map(article => article.path)];
   const urls = paths.map(path => `  <url><loc>${SITE}${path}</loc></url>`).join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
 }

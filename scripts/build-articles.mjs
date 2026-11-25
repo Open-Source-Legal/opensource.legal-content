@@ -7,6 +7,8 @@ import { benchmarkIndex, benchmarkSubject } from './benchmark-index.mjs';
 const markdown = new MarkdownIt({ html: false });
 const escape = markdown.utils.escapeHtml;
 const repo = 'https://github.com/Open-Source-Legal/opensource.legal-content';
+const site = 'https://opensource.legal';
+const license = 'https://creativecommons.org/licenses/by-nc/4.0/';
 const contribute = repo + '/blob/main/CONTRIBUTING.md';
 
 function parseArticle(filename, source, section) {
@@ -31,7 +33,7 @@ function parseArticle(filename, source, section) {
   const context = section === 'benchmarks' ? escape(meta.publisher) + ' · ' + escape(meta.access) : '';
   const subject = section === 'benchmarks' ? benchmarkSubject(meta.subject) : undefined;
   const searchText = [title, summary, author, meta.publisher, meta.access, subject?.title, match[2]].join(' ').toLowerCase().replace(/\s+/g, ' ');
-  return { slug, section, path: '/' + section + '/' + slug, date: meta.date, title, summary, byline, context, publisher: meta.publisher, access: meta.access, subject, searchText, body: markdown.render(match[2]) };
+  return { slug, section, path: '/' + section + '/' + slug, date: meta.date, title, summary, author, byline, context, publisher: meta.publisher, access: meta.access, subject, searchText, body: markdown.render(match[2]) };
 }
 
 export const collections = [
@@ -67,22 +69,34 @@ async function buildCollection(root, dist, page, collection) {
   posts.sort(newestFirst);
   const output = join(dist, section);
   await mkdir(output, { recursive: true });
-  const filenames = new Set(posts.map(post => post.slug + '.html'));
+  const filenames = new Set(posts.flatMap(post => [post.slug + '.html', post.slug + '.md']));
   for (const filename of await readdir(output)) {
-    if (filename.endsWith('.html') && !filenames.has(filename)) await unlink(join(output, filename));
+    if (/\.(?:html|md)$/.test(filename) && !filenames.has(filename)) await unlink(join(output, filename));
   }
   for (const post of posts) {
     const html = `<article><a href="/${section}">All ${plural}</a><h1>${escape(post.title)}</h1>
       <p class="summary">${escape(post.summary)}</p>
       ${post.context ? `<p>${post.context}</p>` : ''}<p class="byline">${post.context ? 'Reviewed ' : ''}${post.byline}</p>${post.body}
       <p><a href="${repo}/edit/main/content/${section}/${post.slug}.md">Edit this ${item} on GitHub</a></p></article>`;
-    await writeFile(join(output, post.slug + '.html'), page(post.title, post.summary, post.path, html));
+    await copyFile(join(source, post.slug + '.md'), join(output, post.slug + '.md'));
+    const schema = {
+      '@type': { articles: 'Article', blog: 'BlogPosting', benchmarks: 'WebPage' }[section],
+      author: post.author === 'Open Source Legal' ? { '@type': 'Organization', name: post.author, url: site } : { '@type': 'Thing', name: post.author },
+      [section === 'benchmarks' ? 'lastReviewed' : 'datePublished']: post.date,
+      license,
+    };
+    await writeFile(join(output, post.slug + '.html'), page(post.title, post.summary, post.path, html, schema, true));
   }
 
   const archive = section === 'benchmarks'
     ? benchmarkIndex(posts, contribute, escape)
     : writingIndex(posts, collection);
-  await writeFile(join(dist, section + '.html'), page(title, summary, '/' + section, archive));
+  await writeFile(join(dist, section + '.html'), page(title, summary, '/' + section, archive, {
+    '@type': 'CollectionPage',
+    mainEntity: { '@type': 'ItemList', numberOfItems: posts.length, itemListElement: posts.map((post, i) => ({
+      '@type': 'ListItem', position: i + 1, name: post.title, url: site + post.path,
+    })) },
+  }));
   return posts;
 }
 
@@ -110,8 +124,23 @@ function latestList(posts, mixed) {
 
 export async function buildArticles(root, dist) {
   const template = await readFile(join(root, 'templates/article-page.html'), 'utf8');
-  function page(title, description, path, content) {
-    const fields = { title: escape(title), description: escape(description), path, content, contribute };
+  function page(title, description, path, content, schema, hasMarkdown = false) {
+    const url = site + path;
+    const graph = {
+      '@context': 'https://schema.org', ...schema,
+      url, name: title, description, inLanguage: 'en',
+      isPartOf: { '@id': site + '/#website' },
+    };
+    if (['Article', 'BlogPosting'].includes(schema['@type'])) {
+      graph.headline = title;
+      graph.mainEntityOfPage = url;
+    }
+    const fields = {
+      title: escape(title), description: escape(description), path, content, contribute,
+      ogType: graph.headline ? 'article' : 'website',
+      markdownLink: hasMarkdown ? '<link rel="alternate" type="text/markdown" href="' + url + '.md">' : '',
+      graph: JSON.stringify(graph).replace(/</g, '\\u003c'),
+    };
     return template.replace(/{{(\w+)}}/g, (_, key) => fields[key]);
   }
   const posts = [];
@@ -122,6 +151,21 @@ export async function buildArticles(root, dist) {
   for (const name of ['articles.css', 'article-search.js']) {
     await copyFile(join(root, 'templates', name), join(dist, name));
   }
+  const feed = {
+    version: 'https://jsonfeed.org/version/1.1', title: 'Open Source Legal',
+    home_page_url: site + '/', feed_url: site + '/feed.json', language: 'en',
+    description: 'Articles, blog posts and benchmark notes from Open Source Legal.',
+    items: posts.map(post => {
+      const url = site + post.path;
+      return {
+        id: url, url, title: post.title, content_text: post.summary,
+        authors: [{ name: post.author }], tags: [post.section],
+        [post.section === 'benchmarks' ? 'date_modified' : 'date_published']: post.date + 'T00:00:00Z',
+        attachments: [{ url: url + '.md', mime_type: 'text/markdown', title: 'Full text in Markdown' }],
+      };
+    }),
+  };
+  await writeFile(join(dist, 'feed.json'), JSON.stringify(feed, null, 2) + '\n');
   // The deployed legacy homepage still requests its article-only fragment.
   await writeFile(join(dist, 'latest-articles.html'), latestList(posts.filter(post => post.section === 'articles'), false));
   await writeFile(join(dist, 'latest-writing.html'), latestList(posts.filter(post => post.section !== 'benchmarks'), true));
