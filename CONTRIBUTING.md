@@ -10,6 +10,8 @@ Use the blog for project updates, field notes and commentary. Create a file such
 
 Add one Markdown file to `content/benchmarks/`. Use the article front matter shown below and add two fields: `publisher` (who maintains the benchmark) and `access` (what a reader can obtain, such as “Public harness and tasks” or “Published studies”). Use `date` for the day you checked the sources and `author` for the person or group writing the entry.
 
+Set `subject` to `contracts-documents`, `legal-reasoning` or `research-collections` to place your entry in that section. Entries without a subject appear under “Other benchmarks”.
+
 Describe the task, how outputs are judged and a limitation that matters when interpreting the result. Link directly to the publisher’s method, data, harness or results. For a collection of studies, say so and identify any separately listed benchmark it hosts. Your filename becomes `/benchmarks/<filename-without-.md>`. A reviewed merge adds the entry to benchmark search and the sitemap. The editorial text follows the same CLA and CC BY-NC 4.0 terms as an article. [Propose a benchmark](https://github.com/Open-Source-Legal/opensource.legal-content/new/main/content/benchmarks)
 
 ## Add or correct a tool
