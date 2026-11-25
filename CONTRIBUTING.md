@@ -1,10 +1,16 @@
 # Contribute to Open Source Legal
 
-The directory, articles and blog posts are edited through GitHub pull requests. Sign in to GitHub, fork this repository and make a branch for your change. The GitHub file editor can create the fork and branch for you. Propose your change against the site's `main` branch. A maintainer reviews the diff and merges it for publication.
+The directory, benchmarks, articles and blog posts are edited through GitHub pull requests. Sign in to GitHub, fork this repository and make a branch for your change. The GitHub file editor can create the fork and branch for you. Propose your change against the site's `main` branch. A maintainer reviews the diff and merges it for publication.
 
 ## Write a blog post
 
 Use the blog for project updates, field notes and commentary. Create a file such as `content/blog/reviewing-a-redline.md` with the same title, summary, date and author fields as an article. Its permanent URL is `/blog/reviewing-a-redline`. Each post appears in the searchable blog archive and sitemap. The same review, CLA and CC BY-NC 4.0 terms apply to both formats. [Create a blog post](https://github.com/Open-Source-Legal/opensource.legal-content/new/main/content/blog) · [Article front matter example](#write-an-article)
+
+## Add a benchmark
+
+Add one Markdown file to `content/benchmarks/`. Use the article front matter shown below and add two fields: `publisher` (who maintains the benchmark) and `access` (what a reader can obtain, such as “Public harness and tasks” or “Published studies”). Use `date` for the day you checked the sources and `author` for the person or group writing the entry.
+
+Describe the task, how outputs are judged and a limitation that matters when interpreting the result. Link directly to the publisher’s method, data, harness or results. For a collection of studies, say so and identify any separately listed benchmark it hosts. Your filename becomes `/benchmarks/<filename-without-.md>`. A reviewed merge adds the entry to benchmark search and the sitemap. The editorial text follows the same CLA and CC BY-NC 4.0 terms as an article. [Propose a benchmark](https://github.com/Open-Source-Legal/opensource.legal-content/new/main/content/benchmarks)
 
 ## Add or correct a tool
 
