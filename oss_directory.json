@@ -280,6 +280,15 @@
     "category": "Legal Research & Court Data"
   },
   {
+    "title": "Legilux",
+    "github_url": null,
+    "homepage": "https://data.public.lu/en/datasets/legilux-journal-officiel-du-grand-duche-de-luxembourg-1/",
+    "description": "Query Luxembourg’s official legislative database through a public SPARQL endpoint. Use European Legislation Identifiers to join Official Journal records to acts and their publication metadata. The national data catalog lists the resource under CC BY.",
+    "category": "Legal Research & Court Data",
+    "license": "CC-BY",
+    "license_label": "CC BY"
+  },
+  {
     "title": "OpenStates",
     "github_url": "https://github.com/openstates/openstates-scrapers",
     "homepage": "https://openstates.org/",
