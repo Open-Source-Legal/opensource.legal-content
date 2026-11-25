@@ -451,6 +451,13 @@
     "category": "Legal Standards & Taxonomies"
   },
   {
+    "title": "Resecta",
+    "github_url": "https://github.com/Merlin1A/resecta",
+    "homepage": "https://resecta.app/",
+    "description": "Redact PDFs on an iPhone. Resecta rebuilds pages as images with marked pixels removed, then checks the output on the device before export. The open-source app is licensed under Apache-2.0.",
+    "category": "Document Conversion & Processing"
+  },
+  {
     "title": "Microsoft Presidio",
     "github_url": "https://github.com/microsoft/presidio",
     "homepage": "https://microsoft.github.io/presidio/",
