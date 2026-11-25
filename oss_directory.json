@@ -504,6 +504,15 @@
     "category": "Legal AI Datasets & Benchmarks"
   },
   {
+    "title": "Open Legal-Answer Quality Benchmark",
+    "github_url": "https://github.com/Vaquill-AI/open-legal-answer-benchmark",
+    "homepage": null,
+    "description": "Run Vaquill’s scoring script against published answers to a fixed set of U.S. legal questions, or evaluate a new submission. The July 2026 snapshot includes the questions, answers and scoring criteria. The scorer is MIT and the benchmark data is CC BY 4.0.",
+    "category": "Legal AI Datasets & Benchmarks",
+    "license": "MIT",
+    "license_label": "MIT scorer · CC BY 4.0 data"
+  },
+  {
     "title": "LegalBench",
     "github_url": "https://github.com/HazyResearch/legalbench",
     "homepage": "https://hazyresearch.stanford.edu/legalbench/",
