@@ -101,6 +101,13 @@
     "category": "Redlining & Document Comparison"
   },
   {
+    "title": "Suffolk LIT Lab Document Assembly Line",
+    "github_url": "https://github.com/SuffolkLITLab/docassemble-AssemblyLine",
+    "homepage": "https://suffolklitlab.org/docassemble-AssemblyLine-documentation/",
+    "description": "Build guided interviews that fill court forms with docassemble. Suffolk LIT Lab supplies reusable questions and runtime components for tasks such as collecting party information and assembling the completed documents. MIT-licensed.",
+    "category": "Document Assembly & Contract Automation"
+  },
+  {
     "title": "Docassemble",
     "github_url": "https://github.com/jhpyle/docassemble",
     "homepage": "https://docassemble.org/",
